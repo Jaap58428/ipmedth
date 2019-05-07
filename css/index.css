@@ -1,5 +1,5 @@
 .welcomeCard {
-    background:linear-gradient(135deg, #bebebe 0%,#8f8f8f 85%);
+    background:linear-gradient(135deg, #8d8d8d 0%,#686868 85%);
     width: 80%;
     height: 80%;
     display: flex;
@@ -7,18 +7,24 @@
     justify-content: space-around;
     margin: auto;
     flex-direction: column;
+    color: #fff;
 }
 
 .infoBox {
     text-align: center
 }
 
-.infoBox .title {
+.infoBox .welcome {
     font-size: 3rem;
+    margin: 40px 0;
 }
 
 .infoBox .intro {
-    font-size: 1.2rem;
+    font-size: 1.55rem;
+}
+
+.infoBox .title {
+    font-size: 3.8rem;
 }
 
 .startButton {
@@ -27,7 +33,7 @@
     color: #000;
     transition: 0.5s all;
     text-align: center;
-    padding: 20px 40px;
+    padding: 10px 60px;
     display: inline-block;
     text-decoration: none;
 }
@@ -36,4 +42,8 @@
     background-color: #000;
     color: #fff;
     cursor: pointer;
+}
+
+.credits {
+    color: #ccc;
 }
