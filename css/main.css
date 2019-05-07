@@ -1,6 +1,7 @@
-html, body {
+html,
+body {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    background: linear-gradient(135deg, #5fddc8 0%,#f0c95d 85%);
+    background: linear-gradient(135deg, #5fddc8 0%, #f0c95d 85%);
     margin: 0;
     padding: 0;
 }
@@ -20,7 +21,8 @@ body {
 }
 
 .card {
-    background:linear-gradient(135deg, #8d8d8d 0%,#686868 85%);
+    background: rgb(141, 141, 141);
+    /* background: linear-gradient(135deg, #8d8d8d 0%, #686868 85%); */
     width: 80%;
     height: 80%;
     display: flex;

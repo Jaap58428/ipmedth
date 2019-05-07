@@ -1,12 +1,19 @@
 {
-    "disclaimerItems": [
-        {
+    "disclaimerItems": [{
             "title": "risico",
             "description": "Gebuik is op eigen risico, altijd in overleg met de aangewezen behandelaar."
         },
         {
             "title": "ondersteuning",
             "description": "Deze trainingsapplicatie is puur bedoelt als ondersteuning van professionele therapie. Als u hulp nodig heeft neemt u dan contact op met een zorgverlener."
+        },
+        {
+            "title": "cookies",
+            "description": "Deze applicatie maakt gebruik van lokale opslag op uw apparaat in do vorm van cookies. Dit wordt enkel gebruikt om uw persoonlijke voortgang bij te houden. Deze informatie zal nooit met VALK of andere partijen worden gedeeld zonder uw expliciete toestemming."
+        },
+        {
+            "title": "vrijwillig",
+            "description": "U kunt ten alle tijden stoppen met het gebruik van de applicatie. Wanneer u zich angstig voelt of de ervaring te confronterend voor u is kunt u simpelweg de VR-bril afzetten. Het is echter in het voordeel van uw therapie om in dit soort moment te volharden en proberen door te zetten met behulp van de aangerijkte technieken."
         }
     ]
 }

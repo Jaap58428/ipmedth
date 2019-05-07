@@ -1,0 +1,28 @@
+.scroller {
+    max-height: 60%;
+    max-width: 80%;
+}
+
+.disclaimerList {
+    margin: 0;
+    padding: 0 25px;
+    max-height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.disclaimerItem {
+    list-style-type: lower-alpha;
+    margin-bottom: 10px;
+}
+
+.fader {
+    transition: all 0.5s;
+    position: relative; 
+    bottom: 5em;
+    height: 5em;
+    background: linear-gradient(
+        rgba(255, 255, 255, 0) 0%,
+        rgb(141, 141, 141, 1) 100%
+    ); 
+} 
