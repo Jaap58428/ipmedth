@@ -5,7 +5,7 @@ const homeStart = () => {
     // access a key of the array like array['key'] instead of
     // array.key to avoid js errors. 
     // also checking its value will always be of type String
-    if (cookies['disclaimerAccepted'] == 'true') {
+    if (cookies['disclaimerAgreement'] == 'true') {
         // when disclaimer is accepted before redirect to the homepage
         window.location = "menu.html";
     } else {
@@ -26,3 +26,10 @@ const getCookies = () => {
     return cookieObject
 
 }
+
+const setCookie = (cname, cvalue, exdays) => {
+    let d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  }

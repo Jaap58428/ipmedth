@@ -24,7 +24,7 @@ body {
     background: rgb(141, 141, 141);
     /* background: linear-gradient(135deg, #8d8d8d 0%, #686868 85%); */
     width: 80%;
-    height: 80%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-around;

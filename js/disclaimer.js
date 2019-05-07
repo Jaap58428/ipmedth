@@ -17,16 +17,15 @@ const getDisclaimerItems = () => {
 
 const submitDisclaimer = () => {
     console.log('disclaim submited');
-
 }
 
 const processForm = (e) => {
     if (e.preventDefault) e.preventDefault();
 
-    console.log('catched', e);
-    
-
-    /* do what you want with the form */
+    if (e.target[0].checked) {
+        setCookie('disclaimerAgreement', 'true', 30);
+        window.location = "menu.html";
+    }
 
     // You must return false to prevent the default form behavior
     return false;
