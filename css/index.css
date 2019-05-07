@@ -15,20 +15,20 @@
 }
 
 .infoBox .welcome {
-    font-size: 3rem;
-    margin: 40px 0;
+    font-size: 2rem;
+    margin: 20px 0;
 }
 
 .infoBox .intro {
-    font-size: 1.55rem;
+    font-size: 1rem;
 }
 
 .infoBox .title {
-    font-size: 3.8rem;
+    font-size: 2.5rem;
 }
 
 .startButton {
-    font-size: 3rem;
+    font-size: 1.6rem;
     background-color: #fff;
     color: #000;
     transition: 0.5s all;
@@ -45,5 +45,6 @@
 }
 
 .credits {
+    font-size: 0.8rem;
     color: #ccc;
 }
