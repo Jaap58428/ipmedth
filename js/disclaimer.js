@@ -25,6 +25,8 @@ const processForm = (e) => {
     if (e.target[0].checked) {
         setCookie('disclaimerAgreement', 'true', 30);
         window.location = "menu.html";
+    } else {
+        alert("Voor het gebruik van de applicatie is uw toestemming op bovenstaande zaken vereist.")
     }
 
     // You must return false to prevent the default form behavior
@@ -56,7 +58,5 @@ const main = () => {
     preventDefaultForm();
     controlFader();
 }
-
-//297 64 232
 
 document.addEventListener('DOMContentLoaded', main)
