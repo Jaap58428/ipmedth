@@ -76,6 +76,15 @@ const getNewOceanElement = () => {
 
 const main = () => {
     createOcean(oceanLength, oceanWidth, waveHeight, oceanResolution);
+    // setTimeout(()=> {
+    //     let scene = document.getElementById('scene')
+    //     scene.style.display = "none";
+    //     document.getElementById('test').innerHTML="hello"
+    // }, 5000)   
+    // setTimeout(()=> {
+    //     let scene = document.getElementById('scene')
+    //     scene.style.display = "initial";
+    // }, 10000)   
     
 }
 
