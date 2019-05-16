@@ -15,7 +15,13 @@ const homeStart = () => {
     }
 }
 
+/**
+ * DEPRECATED! USE LOCALSTORAGE INSTEAD
+ */
 const getCookies = () => {
+
+    console.warn('DEPRECATED! USE LOCALSTORAGE INSTEAD OF COOKIES');
+
     let cookieObject = {}
     let cookies = decodeURIComponent(document.cookie).split(';');
 
@@ -28,7 +34,12 @@ const getCookies = () => {
 
 }
 
+/**
+ * DEPRECATED! USE LOCALSTORAGE INSTEAD
+ */
 const setCookie = (cname, cvalue, exdays) => {
+    console.warn('DEPRECATED! USE LOCALSTORAGE INSTEAD OF COOKIES');
+    
     let d = new Date();
     d.setTime(d.getTime() + (exdays*24*60*60*1000));
     var expires = "expires="+ d.toUTCString();
