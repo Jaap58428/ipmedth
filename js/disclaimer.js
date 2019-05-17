@@ -23,7 +23,8 @@ const processForm = (e) => {
     if (e.preventDefault) e.preventDefault();
 
     if (e.target[0].checked) {
-        setCookie('disclaimerAgreement', 'true', 30);
+        setLocalStorage('disclaimerAgreement', true);
+        // setCookie('disclaimerAgreement', 'true', 30);
         window.location = "menu.html";
     } else {
         alert("Voor het gebruik van de applicatie is uw toestemming op bovenstaande zaken vereist.")
