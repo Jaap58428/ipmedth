@@ -10,7 +10,7 @@ const fillDisclaimer = (disclaimerItems) => {
 }
 
 const getDisclaimerItems = () => {
-    $.getJSON("disclaimerItems.json", (response) => {
+    $.getJSON("page_assets/disclaimerItems.json", (response) => {
         fillDisclaimer(response.disclaimerItems)
     })
 }
@@ -25,7 +25,7 @@ const processForm = (e) => {
     if (e.target[0].checked) {
         setLocalStorage('disclaimerAgreement', true);
         // setCookie('disclaimerAgreement', 'true', 30);
-        window.location = "menu.html";
+        stateController.changeState(2);
     } else {
         alert("Voor het gebruik van de applicatie is uw toestemming op bovenstaande zaken vereist.")
     }
@@ -54,10 +54,8 @@ const controlFader = () => {
     })
 }
 
-const main = () => {
+const startDisclaimer = () => {
     getDisclaimerItems();
     preventDefaultForm();
     controlFader();
 }
-
-document.addEventListener('DOMContentLoaded', main)
