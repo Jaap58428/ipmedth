@@ -8,10 +8,9 @@ const main = () => {
         stateController.updateView();
     }
 
-    window.addEventListener("orientationchange", function () {
-        alert("the orientation of the device is now " + screen.orientation.angle);
-    });
-
+    if (screen.orientation.angle !== 90 || screen.orientation.angle !== -90) {
+        alert("Let op! Deze website is bedoeld voor gebruik in landschap modus");
+    }
 
 }
 
