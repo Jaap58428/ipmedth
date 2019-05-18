@@ -15,7 +15,7 @@
     font-size: 1.6rem;
     background-color: #fff;
     color: #000;
-    transition: 0.5s all;
+    /* transition: 0.5s all; */
     text-align: center;
     padding: 10px 60px;
     display: inline-block;

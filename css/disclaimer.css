@@ -39,7 +39,7 @@
     font-size: 1rem;
     background-color: #fff;
     color: #000;
-    transition: 0.3s all;
+    /* transition: 0.3s all; */
     padding: 10px 10px;
     margin: 10px 30px;
     display: inline-block;

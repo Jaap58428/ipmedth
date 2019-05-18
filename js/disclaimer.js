@@ -23,9 +23,9 @@ const processForm = (e) => {
     if (e.preventDefault) e.preventDefault();
 
     if (e.target[0].checked) {
-        setLocalStorage('disclaimerAgreement', true);
+        stateController.setLocalStorage('disclaimerAgreement', true);
         // setCookie('disclaimerAgreement', 'true', 30);
-        stateController.changeState(2);
+        stateController.changeState(7);
     } else {
         alert("Voor het gebruik van de applicatie is uw toestemming op bovenstaande zaken vereist.")
     }
@@ -59,3 +59,5 @@ const startDisclaimer = () => {
     preventDefaultForm();
     controlFader();
 }
+
+startDisclaimer()

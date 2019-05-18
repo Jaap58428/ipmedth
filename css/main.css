@@ -12,12 +12,13 @@ body {
 }
 
 .wrapper {
-    width: 100%;
+    width: 75%;
     height: 100%;
     display: flex;
     justify-content: space-around;
     flex-direction: column;
     align-content: center;
+    margin: auto;
 }
 
 .card {
