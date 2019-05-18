@@ -2,11 +2,13 @@ var stateController;
 
 const main = () => {
     //initialize state controller
-    stateController = new StateController();
 
+    if (stateController == undefined) {
+        stateController = new StateController();
+        stateController.updateView();
+    }
 
-
-    stateController.updateView();
+    
 }
 
 class StateController {
@@ -30,7 +32,7 @@ class StateController {
 
     updateView() {
         // remove current view
-        let body = document.getElementById('body');
+        let body = document.body;
         while (body.hasChildNodes()) {
             body.removeChild(body.lastChild);
         }
@@ -68,6 +70,7 @@ class StateController {
 
             case 4:
                 $("#body").load("page_assets/instructions.html");
+                loadJsFile('js/instructions.js')
                 break;
 
             case 5:

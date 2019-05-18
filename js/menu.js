@@ -1,4 +1,4 @@
-const startMenu = () => {
+startMenu = () => {
     let startbutton = document.getElementById('startButton')
     let instructionsButton = document.getElementById('instructionsButton')
     let progressButton = document.getElementById('progressButton')
