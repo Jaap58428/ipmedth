@@ -8,10 +8,8 @@ const main = () => {
         stateController.updateView();
     }
 
-    document.addEventListener("orientationchange", function (event) {
-        window.addEventListener("orientationchange", function() {
-            alert("the orientation of the device is now " + screen.orientation.angle);
-          });
+    window.addEventListener("orientationchange", function () {
+        alert("the orientation of the device is now " + screen.orientation.angle);
     });
 
 
