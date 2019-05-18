@@ -8,7 +8,18 @@ const main = () => {
         stateController.updateView();
     }
 
-    
+    document.addEventListener("orientationchange", function (event) {
+        switch (window.orientation) {
+            case -90:
+            case 90:
+                alert('Deze applicatie werkt alleen in horizontale modus.')
+                break;
+            default:
+                /* Device is in portrait mode */
+        }
+    });
+
+
 }
 
 class StateController {
