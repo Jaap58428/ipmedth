@@ -82,6 +82,8 @@ class StateController {
 
             case 6:
                 $("#body").load("page_assets/level_select.html");
+                loadJsFile('js/dependencies/imageMapResizer.min.js')
+                loadJsFile('js/level_select.js')
                 break;
 
             case 7:
