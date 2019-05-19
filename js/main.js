@@ -66,6 +66,17 @@ class StateController {
         return false;
     }
 
+    loadJsFile (fileLocation) {
+        // DOM: Create the script element
+        let jsElm = document.createElement("script");
+        // set the type attribute
+        jsElm.type = "application/javascript";
+        // make the script element load file
+        jsElm.src = fileLocation;
+        // finally insert the element to the body element in order to load the script
+        document.body.appendChild(jsElm);
+    }
+
     updateView() {
         // remove current view
         let body = document.body;
@@ -73,16 +84,7 @@ class StateController {
             body.removeChild(body.lastChild);
         }
 
-        const loadJsFile = (fileLocation) => {
-            // DOM: Create the script element
-            let jsElm = document.createElement("script");
-            // set the type attribute
-            jsElm.type = "application/javascript";
-            // make the script element load file
-            jsElm.src = fileLocation;
-            // finally insert the element to the body element in order to load the script
-            document.body.appendChild(jsElm);
-        }
+
 
         // push new view based of state
         switch (this.appState) {
@@ -92,37 +94,29 @@ class StateController {
 
             case 1:
                 $("#body").load("page_assets/disclaimer.html");
-                loadJsFile("js/disclaimer.js")
                 break;
 
             case 2:
                 $("#body").load("page_assets/menu.html");
-                loadJsFile('js/menu.js')
                 break;
 
             case 3:
                 $("#body").load("page_assets/progress.html");
-                loadJsFile('js/progress.js')
                 break;
 
             case 4:
                 $("#body").load("page_assets/instructions.html");
-                loadJsFile('js/instructions.js')
                 break;
 
             case 5:
                 $("#body").load("page_assets/settings.html");
-                loadJsFile('js/settings.js')
                 break;
 
             case 6:
                 if (this.getLocalStorage('playedBefore')) {
                     $("#body").load("page_assets/level_select.html");
-                    loadJsFile('js/dependencies/imageMapResizer.js')
-                    loadJsFile('js/level_select.js')
                 } else {
                     $("#body").load("page_assets/first_time.html");
-                    loadJsFile('js/first_time.js')
                 }
                 break;
 

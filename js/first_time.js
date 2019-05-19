@@ -22,4 +22,4 @@ startFirstTime = () => {
 
 }
 
-startFirstTime();
+setTimeout(startFirstTime, 100);
