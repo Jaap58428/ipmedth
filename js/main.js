@@ -8,7 +8,7 @@ const main = () => {
         stateController.updateView();
     }
 
-    if (screen.orientation.angle == 0 || screen.orientation.angle == 180) {
+    if (screen.orientation.angle == 0) {
         alert("Let op! Deze website is bedoeld voor gebruik in landschap modus");
     }
 
@@ -28,7 +28,7 @@ class StateController {
 
     startLevel() {
         let level = this.levelSelected
-        this.levelSelected = null
+        // this.levelSelected = null
 
         let levelName = "vr_assets/"
         switch (level) {
@@ -58,12 +58,6 @@ class StateController {
     changeState(newState) {
         this.appState = newState;
         this.updateView();
-    }
-
-    checkFirstUse() {
-
-
-        return false;
     }
 
     loadJsFile (fileLocation) {
