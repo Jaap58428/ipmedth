@@ -1,4 +1,4 @@
-const fillDisclaimer = (disclaimerItems) => {
+fillDisclaimer = (disclaimerItems) => {
     let ul = document.getElementById("disclaimerList");
 
     disclaimerItems.forEach(item => {
@@ -9,22 +9,21 @@ const fillDisclaimer = (disclaimerItems) => {
     });
 }
 
-const getDisclaimerItems = () => {
+ getDisclaimerItems = () => {
     $.getJSON("page_assets/disclaimerItems.json", (response) => {
         fillDisclaimer(response.disclaimerItems)
     })
 }
 
-const submitDisclaimer = () => {
+submitDisclaimer = () => {
     console.log('disclaim submited');
 }
 
-const processForm = (e) => {
+processForm = (e) => {
     if (e.preventDefault) e.preventDefault();
 
     if (e.target[0].checked) {
         stateController.setLocalStorage('disclaimerAgreement', true);
-        // setCookie('disclaimerAgreement', 'true', 30);
         stateController.changeState(7);
     } else {
         alert("Voor het gebruik van de applicatie is uw toestemming op bovenstaande zaken vereist.")
@@ -34,7 +33,7 @@ const processForm = (e) => {
     return false;
 }
 
-const preventDefaultForm = () => {
+preventDefaultForm = () => {
     let form = document.getElementById('agreementForm');
     if (form.attachEvent) {
         form.attachEvent("submit", processForm);
@@ -42,7 +41,7 @@ const preventDefaultForm = () => {
         form.addEventListener("submit", processForm);
     }
 }
-const controlFader = () => {
+controlFader = () => {
     let list = document.getElementById('disclaimerList');
     let fader = document.getElementById('fader');
     list.addEventListener('scroll', () => {
@@ -54,10 +53,14 @@ const controlFader = () => {
     })
 }
 
-const startDisclaimer = () => {
+startDisclaimer = () => {
     getDisclaimerItems();
     preventDefaultForm();
     controlFader();
+
+    document.getElementById('backButton').addEventListener('click', () => {
+        stateController.changeState(6)
+    })
 }
 
 startDisclaimer()

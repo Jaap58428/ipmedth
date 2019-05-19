@@ -1,0 +1,58 @@
+.welcome {
+    font-size: 1.4rem;
+}
+
+.slidecontainer {
+    width: 100%;
+    /* Width of the outside container */
+}
+
+.slider {
+    width: 100%;
+    height: 10px;
+    margin: 15px 0;
+    border-radius: 5px;
+    background: #eeeeee;
+    outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
+#demo {
+    text-align: center
+}
+
+.levelExplaining {
+    font-size: 0.9rem;
+}
+
+.startButton {
+    text-align: center;
+    align-self: center;
+    display: inline;
+    background-color: #fff;
+    padding: 10px 30px;
+    margin: 10px 0;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.startButton:hover {
+    background-color: #000;
+    color: #fff;
+}

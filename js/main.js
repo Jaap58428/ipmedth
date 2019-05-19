@@ -22,6 +22,33 @@ class StateController {
             this.appState = 0;
         }
 
+        this.levelSelected = null;
+
+    }
+
+    startLevel() {
+        let level = this.levelSelected
+        this.levelSelected = null
+
+        let levelName = "vr_assets/"
+        switch (level) {
+            case 0:
+                levelName += "training_level.html"
+                break;
+
+            case 2:
+                levelName += "dunes_level.html"
+                break;
+
+            case 4:
+                levelName += "pier_level.html"
+                break;
+
+            default:
+                break;
+        }
+
+        $("#body").load(levelName);
     }
 
     getState() {
@@ -31,6 +58,12 @@ class StateController {
     changeState(newState) {
         this.appState = newState;
         this.updateView();
+    }
+
+    checkFirstUse() {
+
+
+        return false;
     }
 
     updateView() {
@@ -83,25 +116,18 @@ class StateController {
                 break;
 
             case 6:
-                $("#body").load("page_assets/level_select.html");
-                loadJsFile('js/dependencies/imageMapResizer.min.js')
-                loadJsFile('js/level_select.js')
+                if (this.getLocalStorage('playedBefore')) {
+                    $("#body").load("page_assets/level_select.html");
+                    loadJsFile('js/dependencies/imageMapResizer.min.js')
+                    loadJsFile('js/level_select.js')
+                } else {
+                    $("#body").load("page_assets/first_time.html");
+                    loadJsFile('js/first_time.js')
+                }
                 break;
 
             case 7:
-                $("#body").load("page_assets/height_setting.html");
-                break;
-
-            case 8:
-                $("#body").load("vr_assets/training_level.html");
-                break;
-
-            case 9:
-                $("#body").load("vr_assets/dunes_level.html");
-                break;
-
-            case 10:
-                $("#body").load("vr_assets/pier_level.html");
+                this.startLevel(this.levelSelected)
                 break;
 
             default:

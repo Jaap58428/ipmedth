@@ -1,5 +1,10 @@
 {
-    "disclaimerItems": [{
+    "disclaimerItems": [
+        {
+            "title": "eerste gebruik",
+            "description": "U staat op het punt deze applicatie voor het eerst compleet te gebruiker. Hiervoor is het noodzakelijk dat u deze punten goed leest en begrijpt."
+        },
+        {
             "title": "risico",
             "description": "Gebuik is op eigen risico, altijd in overleg met de aangewezen behandelaar."
         },

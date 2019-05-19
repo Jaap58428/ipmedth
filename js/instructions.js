@@ -1,6 +1,8 @@
-document.getElementById('backButton').addEventListener('click', () => {
-    stateController.changeState(2)
+startInstructions = () => {
+    document.getElementById('backButton').addEventListener('click', () => {
+        stateController.changeState(2)
+    })
 
-})
+}
 
-
+startInstructions();

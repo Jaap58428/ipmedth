@@ -33,6 +33,12 @@
     flex-direction: column;
 }
 
+.buttonBox {
+    margin: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+
 .button {
     border: 0;
     font-family: inherit;
@@ -41,7 +47,6 @@
     color: #000;
     /* transition: 0.3s all; */
     padding: 10px 10px;
-    margin: 10px 30px;
     display: inline-block;
 }
 

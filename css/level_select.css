@@ -6,3 +6,11 @@
     max-height: auto;
     object-fit: cover;
 }
+
+.levelButton {
+    cursor: pointer;
+}
+
+.levelButton:hover {
+    filter: brightness(110%)
+}
