@@ -69,6 +69,7 @@ class StateController {
 
             case 3:
                 $("#body").load("page_assets/progress.html");
+                loadJsFile('js/progress.js')
                 break;
 
             case 4:
@@ -78,6 +79,7 @@ class StateController {
 
             case 5:
                 $("#body").load("page_assets/settings.html");
+                loadJsFile('js/settings.js')
                 break;
 
             case 6:
