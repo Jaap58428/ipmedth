@@ -8,7 +8,7 @@ const main = () => {
         stateController.updateView();
     }
 
-    if (screen.orientation.angle !== 90 || screen.orientation.angle !== -90) {
+    if (screen.orientation.angle == 0 || screen.orientation.angle == 180) {
         alert("Let op! Deze website is bedoeld voor gebruik in landschap modus");
     }
 
