@@ -117,6 +117,14 @@ class StateController {
             case 7:
                 this.startLevel(this.levelSelected)
                 break;
+                
+            case 8:
+                $("#body").load("page_assets/delete_data.html");
+                break;
+                
+            case 9:
+                $("#body").load("page_assets/change_height.html");
+                break;
 
             default:
                 console.warn("State controller catched a unknown state.");
