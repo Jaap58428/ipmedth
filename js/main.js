@@ -118,7 +118,7 @@ class StateController {
             case 6:
                 if (this.getLocalStorage('playedBefore')) {
                     $("#body").load("page_assets/level_select.html");
-                    loadJsFile('js/dependencies/imageMapResizer.min.js')
+                    loadJsFile('js/dependencies/imageMapResizer.js')
                     loadJsFile('js/level_select.js')
                 } else {
                     $("#body").load("page_assets/first_time.html");

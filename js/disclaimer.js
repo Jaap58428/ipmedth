@@ -27,6 +27,7 @@ processForm = (e) => {
         stateController.changeState(7);
     } else {
         alert("Voor het gebruik van de applicatie is uw toestemming op bovenstaande zaken vereist.")
+        document.getElementById('agreement').classList.add('disclaimerAlert')
     }
 
     // You must return false to prevent the default form behavior
