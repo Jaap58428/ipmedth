@@ -1,0 +1,42 @@
+.buttonBox {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button {
+    text-align: center;
+    display: inline-block;
+    list-style: none;
+    background-color: #fff;
+    padding: 10px 20px;
+    margin: 10px 0;
+    font-size: 1rem;
+
+    cursor: pointer;
+}
+
+
+.buttonWarning {
+    background-color: rgb(165, 22, 22);
+    color: white;
+}
+
+
+.backButton {
+    color: #fff;
+    background-image: linear-gradient(-45deg, #333, #777);
+    position: initial;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+    z-index: 999;
+}
+
+.button:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.warningCheck {
+    font-weight: bold;
+}

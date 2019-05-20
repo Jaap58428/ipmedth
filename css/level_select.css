@@ -14,3 +14,7 @@
 .levelButton:hover {
     filter: brightness(110%)
 }
+
+body {
+    overflow: hidden;
+}

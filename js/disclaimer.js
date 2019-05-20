@@ -57,7 +57,7 @@ controlFader = () => {
 startDisclaimer = () => {
     getDisclaimerItems();
     preventDefaultForm();
-    controlFader();
+    // controlFader();
 
     document.getElementById('backButton').addEventListener('click', () => {
         stateController.changeState(6)

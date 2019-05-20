@@ -15,7 +15,7 @@ startFirstTime = () => {
     let startButton = document.getElementById("startButton");
     startButton.addEventListener('click', () => {
         stateController.setLocalStorage('playedBefore', true)
-        stateController.setLocalStorage('playerHeight', output)
+        stateController.setLocalStorage('playerHeight', slider.value)
         stateController.levelSelected = 0
         stateController.changeState(7)
     })

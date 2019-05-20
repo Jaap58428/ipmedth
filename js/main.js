@@ -141,6 +141,10 @@ class StateController {
         localStorage.setItem(key, JSON.stringify(object));
     }
 
+    deleteLocalStorage() {
+        localStorage.clear();
+    }
+
 }
 
 window.addEventListener('load', main)
