@@ -126,6 +126,10 @@ class StateController {
                 $("#body").load("page_assets/change_height.html");
                 break;
 
+            case 10:
+                $("#body").load("page_assets/after_level_questions.html");
+                break;
+
             default:
                 console.warn("State controller catched a unknown state.");
                 break;

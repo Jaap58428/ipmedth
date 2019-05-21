@@ -1,0 +1,20 @@
+{
+    "questionnaireItems": [
+        {
+            "question": "Ik heb last van hoogtevrees.",
+            "type": "10-likert"
+        },
+        {
+            "question": "In hoeverre denk je om te kunnen gaan met je angstgevoelens voor hoogtes?",
+            "type": "10-likert"
+        },
+        {
+            "question": "Ik sta open om mijn angsten onder ogen te zien en daar actief mee aan de gang te gaan.",
+            "type": "5-likert"
+        },
+        {
+            "question": "Eventuele op- of aanmerkingen voor aanvang van het programma kan je hier kwijt:",
+            "type": "textArea"
+        }        
+    ]
+}
