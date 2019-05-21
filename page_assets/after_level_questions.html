@@ -5,21 +5,16 @@
     
     <!-- See linked JS file for logic -->
     <div class="card">
-        <h2 class="title">Voorwaardes</h2>
+        <h2 class="title">Evaluatie</h2>
         <form id="questionnaireForm" class="questionnaire">
-            <ul id="questionnaireList" class="questionnaireList">
-                <!-- This area is filled by JavaScript -->
-                <!-- For the implementation see all_level_questions.js: fillQuestionnaire() -->
-            </ul>
-            <input type="checkbox" class="agreementInput css-checkbox" id="agreement" name="agreement"></input>
-            <label for="agreement" class="agreement css-label" id="agreementBox">
-                Ik heb alle voorwaardes gelezen en ga hiermee akkoord.
-            </label></br>
-            <div class="buttonBox">
-                <input class="button" type="submit" value="VERDER"></input>
-                <div class="button" id="backButton">TERUG</div>
-            </div>
+            <!-- This area is filled by JavaScript -->
+            <!-- For the implementation see all_level_questions.js: fillQuestionnaire() -->
+            
         </form>
+        <div class="buttonBox">
+            <input class="button" type="submit" value="VERDER" form="questionnaireForm"></input>
+            <div class="button" id="backButton">TERUG</div>
+        </div>
     </div>
     
 </div>
