@@ -36,6 +36,12 @@ startMenu = () => {
     settingsButton.addEventListener('click', () => {
         stateController.changeState(5)
     })
+
+    // test for Hinako's after level questionnaire
+    let questionnaireBtn = document.getElementById('questionnaireBtn')
+    questionnaireBtn.addEventListener('click', () => {
+        stateController.changeState(10)
+    })
 }
 
 startMenu();
