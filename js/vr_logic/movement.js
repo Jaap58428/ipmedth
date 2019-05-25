@@ -1,18 +1,15 @@
-const pathConnections = {
+pathConnections = {
   1: {
     2: {
       4: {
         5: -1
       }
     },
-    3: {
-      4: {
-        5: -1
-      },
-      5: -1
-    }
+    3: -1
   }
 }
+
+var targetIds;
 
 getCoordinatesDistance = (oldPosition, newPosition) => {
   let productX = Number(newPosition.x) - Number(oldPosition.x);
@@ -23,22 +20,75 @@ getCoordinatesDistance = (oldPosition, newPosition) => {
 
 }
 
+getFinishScreen = () => {
+  let camera = document.getElementById("camera")
+  xyz = camera.getAttribute('position')
+  xyz.z += -3
+
+  let exitScreen = document.createElement('a-entity')
+  exitScreen.setAttribute('geometry', 'primitive', 'plane')
+  exitScreen.setAttribute('geometry', 'width', '4')
+  exitScreen.setAttribute('geometry', 'height', '3')
+  exitScreen.setAttribute('position', xyz)
+  exitScreen.setAttribute('material', 'color', '#19224a')
+  exitScreen.setAttribute('material', 'opacity', '0')
+
+  let text1 = document.createElement('a-text')
+  text1.setAttribute('value', "Niveau geslaagd!")
+  text1.setAttribute('align', "center")
+  text1.setAttribute('position', "0 1 0")
+  exitScreen.appendChild(text1)
+
+  let text2 = document.createElement('a-text')
+  text2.setAttribute('value', "U kunt de telefoon nu afzetten en klikken op Afsluiten")
+  text2.setAttribute('align', "center")
+  text2.setAttribute('position', "0 0.1 0")
+  text2.setAttribute('width', "2.5")
+  exitScreen.appendChild(text2)
+
+  let text3 = document.createElement('a-text')
+  text3.setAttribute('value', "AFSLUITEN")
+  text3.setAttribute('align', "center")
+  text3.setAttribute('position', "0 -0.4 0.02")
+  text3.setAttribute('width', "3")
+  exitScreen.appendChild(text3)
+
+  let exitButton = document.createElement('a-entity')
+  exitButton.setAttribute('geometry', 'primitive', 'plane')
+  exitButton.setAttribute('geometry', 'width', '2.5')
+  exitButton.setAttribute('geometry', 'height', '0.3')
+  exitButton.setAttribute('position', '0 -0.4 0.01')
+  exitButton.setAttribute('material', 'color', 'brown')
+  exitButton.addEventListener('click', () => {
+    stateController.changeState(10)
+  })
+  exitScreen.appendChild(exitButton)
+
+  let animation = document.createElement('a-animation');
+  animation.setAttribute('attribute', 'material.opacity')
+  animation.setAttribute('from', '0')
+  animation.setAttribute('to', '0.7')
+  animation.setAttribute('dur', '5000');
+  exitScreen.appendChild(animation)
+
+  return exitScreen
+}
+
 checkFinish = () => {
-  console.log('animation ended');
-  
-  
+  if (targetIds === -1) {
+    console.log('user finished level');
+    document.querySelector('a-scene').appendChild(getFinishScreen())
+  }
+
 }
 
 getMovementAnimation = (blockCoordinates) => {
-  
+
   let animation = document.createElement('a-animation');
   let oldPosition = document.getElementById('camera').getAttribute('position')
   let newPosition = blockCoordinates.getAttribute('position')
 
   let userHeight = stateController.getLocalStorage('playerHeight')
-  console.log("height: ", userHeight / 100);
-  
-
 
   let distance = getCoordinatesDistance(oldPosition, newPosition)
 
@@ -74,7 +124,7 @@ startMovement = () => {
   let navElements = document.getElementById('navigationBox').children
 
   // grab first target(s)
-  let targetIds = pathConnections[1]
+  targetIds = pathConnections[1]
 
   setUserOnFirstCoordinate(navElements)
 
@@ -126,7 +176,6 @@ startMovement = () => {
           // if its a match: attach a clickListener
           if (navElements[i].dataset.target === key) {
             navElements[i].addEventListener('click', moveHere)
-            console.log('added listener: ', navElements[i]);
             makeTargetVisible(navElements[i])
           }
         }

@@ -1,6 +1,4 @@
-
-
-<a-scene stats renderer="precision: mediump;">
+<a-scene stats renderer="precision: mediump;" embedded>
   <a-assets>
     <a-asset-item id="treehouse-obj" src="vr_assets/assets/Treehouse.obj"></a-asset-item>
     <a-asset-item id="treehouse-mtl" src="vr_assets/assets/Treehouse.mtl"></a-asset-item>
@@ -104,12 +102,5 @@
 </a-scene>
 
 <script>
-  files = [
-    'js/vr_logic/movement.js',
-    'js/vr_logic/waves.js',
-  ]
-
-  files.forEach(filename => {
-    stateController.loadJsFile(filename)
-  });
+  stateController.loadJsFile('js/vr_logic/movement.js')
 </script>

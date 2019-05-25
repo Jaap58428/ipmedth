@@ -1,4 +1,4 @@
-  const fillOcean = (ocean, oceanLength, oceanWidth, waveHeight, oceanResolution) => {
+  fillOcean = (ocean, oceanLength, oceanWidth, waveHeight, oceanResolution) => {
       // cycle through columns and rows to fill ocean with elements
       for (let row = 0; row < oceanLength; row++) {
           for (let column = 0; column < oceanWidth; column++) {
@@ -21,7 +21,7 @@
       }
   }
 
-  const addAnimationToOceanElement = (oceanElement, row, column, waveHeight) => {
+  addAnimationToOceanElement = (oceanElement, row, column, waveHeight) => {
       // build up new animation component
       let animation = document.createElement('a-animation');
       animation.setAttribute('attribute', 'position');
@@ -47,7 +47,7 @@
       }, (row * 1.4 + column * 0.6) * 500);
   }
 
-  const getRandomBlueTint = () => {
+  getRandomBlueTint = () => {
       // https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#HSL_colors
       const hue = Math.round((Math.random() * 20)) + 200;
       const saturation = Math.round((Math.random() * 50)) + 50;
@@ -56,7 +56,7 @@
       return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
   }
 
-  const getNewOceanElement = (oceanResolution, waveHeight) => {
+  getNewOceanElement = (oceanResolution, waveHeight) => {
       // generate a standard ocean element
       let oceanElement = document.createElement('a-box');
       oceanElement.setAttribute('depth', oceanResolution.toString());
@@ -71,7 +71,7 @@
       return oceanElement;
   }
 
-  const main = () => {
+  startWaves = () => {
       // grab ocean component to fill with elements
       let ocean = document.getElementById('ocean');
 
@@ -101,4 +101,4 @@
       fillOcean(ocean, oceanLength, oceanWidth, waveHeight, oceanResolution);
   }
 
-  main();
+  startWaves();
