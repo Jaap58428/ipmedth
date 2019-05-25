@@ -61,7 +61,10 @@ setUserOnFirstCoordinate = (navElements) => {
   for (let i = 0; i < navElements.length; i++) {
     // if its a match: attach a clickListener
     if (navElements[i].dataset.target === "1") {
-      document.getElementById('camera').setAttribute('position', navElements[i].getAttribute('position'))
+      let position = navElements[i].getAttribute('position')
+      xyz = position.split(" ")
+      xyz[1] = (Number(xyz[1]) + stateController.getLocalStorage('playerHeight') / 100).toString()
+      document.getElementById('camera').setAttribute('position', xyz.join(" "))
     }
   }
 }
