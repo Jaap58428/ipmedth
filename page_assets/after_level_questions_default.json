@@ -1,0 +1,34 @@
+{
+    "questionnaireItems": [
+        {
+            "title": "moeite",
+            "question": "Ik had moeite om dit level door te komen.",
+            "type": "5-likert"
+        },
+        {
+            "title": "zelfverzekerd",
+            "question": "Ik was zelfverzekerd dat ik het level door kon komen.",
+            "type": "5-likert"
+        },
+        {
+            "title": "situatie",
+            "question": "Toen zich een moeilijke situatie voordeed, wist ik hoe ik die aan moest pakken.",
+            "type": "5-likert"
+        },
+        {
+            "title": "omgaan",
+            "question": "Na afronding van dit level ben ik zelfverzekerder in het omgaan met hoogtes.",
+            "type": "5-likert"
+        },
+        {
+            "title": "klachten",
+            "question": "Ik heb geen klachten zoals misselijkheid of duizeligheid na afronding van dit level.",
+            "type": "5-likert"
+        },
+        {
+            "title": "opmerkingen",
+            "question": "Eventuele op- of aanmerkingen na dit level kan je hier kwijt:",
+            "type": "textArea"
+        }        
+    ]
+}
