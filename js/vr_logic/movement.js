@@ -26,6 +26,7 @@ getCoordinatesDistance = (oldPosition, newPosition) => {
 checkFinish = () => {
   console.log('animation ended');
   
+  
 }
 
 getMovementAnimation = (blockCoordinates) => {
@@ -34,11 +35,16 @@ getMovementAnimation = (blockCoordinates) => {
   let oldPosition = document.getElementById('camera').getAttribute('position')
   let newPosition = blockCoordinates.getAttribute('position')
 
+  let userHeight = stateController.getLocalStorage('playerHeight')
+  console.log("height: ", userHeight / 100);
+  
+
+
   let distance = getCoordinatesDistance(oldPosition, newPosition)
 
   animation.setAttribute('attribute', 'position')
   animation.setAttribute('from', `${oldPosition.x} ${oldPosition.y} ${oldPosition.z}`)
-  animation.setAttribute('to', `${newPosition.x} ${newPosition.y + 1  } ${newPosition.z}`)
+  animation.setAttribute('to', `${newPosition.x} ${newPosition.y + (userHeight / 100) } ${newPosition.z}`)
   animation.setAttribute('fill', 'forwards')
   animation.setAttribute('easing', 'linear')
   animation.setAttribute('dur', (distance * 300).toString());
