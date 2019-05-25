@@ -41,8 +41,7 @@ class StateController {
                 break;
 
             case 4:
-                // levelName += "pier_level.html"
-                levelName += "training_level.html"
+                levelName += "pier_level.html"
                 break;
 
             default:
