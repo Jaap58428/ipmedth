@@ -47,23 +47,17 @@ fillQuestionnaire = (questionnaireItems) => {
     questionnaireItems.forEach(item => {
         switch(item.type){
             case "5-likert": 
-                let lik5Label = document.createElement('label');
-                lik5Label.className = "questionnaireItem";
-                lik5Label.innerHTML = item.question;
+                addQuestion(item.question);
                 let lik5Scale = addLikertScale(item.title, 5);
                 form.append(lik5Label, lik5Scale);
                 break;
             case "10-likert": 
-                let lik10Label = document.createElement('label');
-                lik10Label.className = "questionnaireItem";
-                lik10Label.innerHTML = item.question;
+                addQuestion(item.question);        
                 let lik10Scale = addLikertScale(item.title, 10);
                 form.append(lik10Label, lik10Scale);
                 break;
             case "textArea": 
-                let label = document.createElement('label');
-                label.className = "questionnaireItem";
-                label.innerHTML = item.question;
+                addQuestion(item.question);
                 let textArea = document.createElement('textarea');
                 textArea.name = "comment";
                 textArea.placeholder = "Hier typen...";
@@ -74,12 +68,17 @@ fillQuestionnaire = (questionnaireItems) => {
                 console.warn("The type given to a questionnaire Item is unknown.");
                 break;
         }
-
     });
 }
 
+addQuestion = (question) => {
+    let label = document.createElement('label');
+    label.className = "questionnaireItem";
+    label.innerHTML = question;
+} 
+
 // Add the Likert scale 
-// !!! NEEDS TO BE MADE PRETTY FOR MORE THAN 5PT
+// TODO: NEEDS TO BE MADE PRETTY FOR MORE THAN 5PT
 addLikertScale = (title, likertAmount) => {
     let ul = document.createElement("ul");
     ul.className = "likert";
