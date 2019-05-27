@@ -1,14 +1,4 @@
-pathConnections = {
-  1: {
-    2: {
-      4: {
-        5: -1
-      }
-    },
-    3: -1
-  }
-}
-
+var pathConnections
 var targetIds;
 
 getCoordinatesDistance = (oldPosition, newPosition) => {
@@ -60,7 +50,7 @@ getFinishScreen = () => {
   exitButton.setAttribute('position', '0 -0.4 0.01')
   exitButton.setAttribute('material', 'color', 'brown')
   exitButton.addEventListener('click', () => {
-    stateController.changeState(10)
+    gameController.exitGame()
   })
   exitScreen.appendChild(exitButton)
 
@@ -88,7 +78,7 @@ getMovementAnimation = (blockCoordinates) => {
   let oldPosition = document.getElementById('camera').getAttribute('position')
   let newPosition = blockCoordinates.getAttribute('position')
 
-  let userHeight = stateController.getLocalStorage('playerHeight')
+  let userHeight = gameController.playerHeight
 
   let distance = getCoordinatesDistance(oldPosition, newPosition)
 
@@ -112,9 +102,16 @@ setUserOnFirstCoordinate = (navElements) => {
     // if its a match: attach a clickListener
     if (navElements[i].dataset.target === "1") {
       let position = navElements[i].getAttribute('position')
-      xyz = position.split(" ")
-      xyz[1] = (Number(xyz[1]) + stateController.getLocalStorage('playerHeight') / 100).toString()
-      document.getElementById('camera').setAttribute('position', xyz.join(" "))
+
+      // position can sometimes be object and sometimes a string
+      if (typeof position === "object") {
+        position.y += gameController.playerHeight / 100
+        document.getElementById('camera').setAttribute('position', position)
+      } else {
+        xyz = position.split(" ")
+        xyz[1] = (Number(xyz[1]) + gameController.playerHeight / 100).toString()
+        document.getElementById('camera').setAttribute('position', xyz.join(" "))
+      }
     }
   }
 }
@@ -122,6 +119,7 @@ setUserOnFirstCoordinate = (navElements) => {
 startMovement = () => {
   // get navigation nodes
   let navElements = document.getElementById('navigationBox').children
+  document.getElementById('camera').setAttribute('wasd-controls', 'enabled', 'false')
 
   // grab first target(s)
   targetIds = pathConnections[1]

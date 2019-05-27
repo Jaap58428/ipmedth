@@ -1,4 +1,5 @@
 var stateController;
+var gameController;
 
 const main = () => {
     //initialize state controller
@@ -48,7 +49,10 @@ class StateController {
                 break;
         }
 
-        $("#body").load(levelName);
+        let playerHeight = this.getLocalStorage('playerHeight')
+        let pathConnections = null;
+        gameController = new GameController(playerHeight, pathConnections, levelName)
+
     }
 
     getState() {
@@ -75,7 +79,8 @@ class StateController {
         // remove current view
         let body = document.body;
         while (body.hasChildNodes()) {
-            body.removeChild(body.lastChild);
+            let oldchild = body.removeChild(body.lastChild);
+            oldchild = undefined
         }
 
 
@@ -149,6 +154,18 @@ class StateController {
         localStorage.clear();
     }
 
+}
+
+class GameController {
+    constructor (playerHeight, pathConnections, levelName) {
+        this.playerHeight = playerHeight;
+        this.pathConnections = pathConnections
+        $("#body").load(levelName);
+    }
+
+    exitGame() {
+        stateController.changeState(10)
+    }
 }
 
 window.addEventListener('load', main)
