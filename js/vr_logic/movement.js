@@ -79,7 +79,6 @@ getMovementAnimation = (blockCoordinates) => {
   let newPosition = blockCoordinates.getAttribute('position')
 
   let userHeight = gameController.playerHeight
-
   let distance = getCoordinatesDistance(oldPosition, newPosition)
 
   animation.setAttribute('attribute', 'position')

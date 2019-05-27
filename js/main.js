@@ -80,7 +80,8 @@ class StateController {
         let body = document.body;
         while (body.hasChildNodes()) {
             let oldchild = body.removeChild(body.lastChild);
-            oldchild = undefined
+            // clear element to double check
+            oldchild = null
         }
 
 

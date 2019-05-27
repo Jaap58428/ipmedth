@@ -73,3 +73,5 @@
     })
 }();
 //# sourceMappingURL=imageMapResizer.map
+
+imageMapResize()
