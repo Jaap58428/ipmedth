@@ -4,6 +4,9 @@ startFirstTime = () => {
     })
 
     let slider = document.getElementById("myRange");
+    if (stateController.getLocalStorage('playerHeight') !== null) {
+        slider.value = stateController.getLocalStorage('playerHeight')
+    }
     let output = document.getElementById("demo");
     output.innerHTML = slider.value + " cm"; // Display the default slider value
 
