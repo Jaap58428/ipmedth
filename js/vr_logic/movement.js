@@ -92,8 +92,8 @@ getMovementAnimation = (blockCoordinates) => {
 }
 
 makeTargetVisible = (element) => {
-  element.appendChild(document.getElementById('navAniHeight').cloneNode(true))
-  element.appendChild(document.getElementById('navAniColour').cloneNode(true))
+  // element.appendChild(document.getElementById('navAniHeight').cloneNode(true))
+  // element.appendChild(document.getElementById('navAniColour').cloneNode(true))
 }
 
 setUserOnFirstCoordinate = (navElements) => {
