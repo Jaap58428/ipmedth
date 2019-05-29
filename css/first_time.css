@@ -16,6 +16,10 @@
     outline: none;
 }
 
+.sliderInput {
+    margin-top: 10px;
+}
+
 .slider::-webkit-slider-thumb {
     appearance: none;
     width: 25px;

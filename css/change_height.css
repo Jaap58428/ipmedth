@@ -30,6 +30,10 @@
     cursor: pointer;
 }
 
+.sliderInput{
+    margin-top: 10px;
+}
+
 #demo {
     text-align: center
 }
