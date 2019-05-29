@@ -3,6 +3,7 @@ startMenu = () => {
     let instructionsButton = document.getElementById('instructionsButton')
     let progressButton = document.getElementById('progressButton')
     let settingsButton = document.getElementById('settingsButton')
+    let feedbackButton = document.querySelector('#feedbackBtn');
 
     let alertUser = () => {
         let reply = confirm('Voor de eerste interactie raden we sterk aan de instructies te bekijken.')
@@ -35,6 +36,20 @@ startMenu = () => {
     })
     settingsButton.addEventListener('click', () => {
         stateController.changeState(5)
+    })
+    feedbackButton.addEventListener("click", () => {
+        let subject = "Hoogtevrees VR - Feedback melding"
+        let message = 
+        
+`Beste ontwikkelaars van de hoogtevrees applicatie,
+
+Ik heb de volgende feedback:
+
+`
+
+        window.location.href = "mailto:s1100592@student.hsleiden.nl?subject=" +
+            encodeURIComponent(subject) +
+            "&body=" + encodeURIComponent(message);
     })
 
     // test for Hinako's after level questionnaire
