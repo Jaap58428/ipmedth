@@ -1,8 +1,31 @@
 <link rel="stylesheet" href="./css/progress.css">
 
 <div class="wrapper" id="wrapper">
-    <div class="backButton" id="backButton">TERUG</div>
-    <div class="comingSoon">Progress Coming Soon</div>
+    <div class="backButton" id="backButton">
+        TERUG
+    </div>
+    <div class="header">
+        <div class="button levelDownButton" id="levelDownButton">
+            Level -1
+        </div>
+
+        <div class="title" id="title">
+            Level -1
+        </div>
+
+        <div class="button levelUpButton" id="levelUpButton">
+            Level -1
+        </div>
+    </div>
+
+    <!-- create one of these per level -->
+    <!-- in other words, change content based of level selection -->
+    <div class="scoreSlider" id="scoreSlider">
+        SCORES
+        <!-- insert score per entry here -->
+        <!-- make overflow-x scrollable -->
+        <canvas id="progressChart"></canvas>
+    </div>
 </div>
 
 <script>
