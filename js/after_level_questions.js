@@ -15,13 +15,12 @@ startQuestions = () => {
     
 }
 
+
+// TODO: break final questionnaire up in 2 pages/parts so the 5-points and 10-points scales aren't on the same page.
 getQuestionnaireItems = () => {
-    // If current level = introductionary level, do first questionnaire
-    // Else if current level = final level, then do final questionnaire
-    // In all other cases, do usual questionnaire
+    // Pick the correct questionnaire JSON file depending on the stage completed
     console.log("*afterlevelquestions() statecheck: " + stateController.levelSelected);
-    switch (stateController.levelSelected){
-        
+    switch (stateController.levelSelected){        
         case 0:
             $.getJSON("page_assets/after_level_questions_introduction.json", (response) => {
                 fillQuestionnaire(response.questionnaireItems)
@@ -33,31 +32,32 @@ getQuestionnaireItems = () => {
             })
             break;
         default:
-            $.getJSON("page_assets/after_level_questions_default.json", (response) => {
+            $.getJSON("page_assets/after_level_questions_final.json", (response) => {
                 fillQuestionnaire(response.questionnaireItems)
-            })
+            });
             break;
     }   
 }
 
 // Fill Questionnaire page with the questions from the corresponding JSON file
 fillQuestionnaire = (questionnaireItems) => {
-    console.log("fillQuestionnaire(); let's fill the quesitonnaire. ")
     let form = document.getElementById("questionnaireForm");
     questionnaireItems.forEach(item => {
+        let label;
+        let scale;
         switch(item.type){
             case "5-likert": 
-                addQuestion(item.question);
-                let lik5Scale = addLikertScale(item.title, 5);
-                form.append(lik5Label, lik5Scale);
+                label = addQuestion(item.question);
+                scale = addLikertScale(item.title, 5);
+                form.append(label, scale);
                 break;
             case "10-likert": 
-                addQuestion(item.question);        
-                let lik10Scale = addLikertScale(item.title, 10);
-                form.append(lik10Label, lik10Scale);
+                label = addQuestion(item.question);        
+                scale = addLikertScale(item.title, 10);
+                form.append(label, scale);
                 break;
             case "textArea": 
-                addQuestion(item.question);
+                label = addQuestion(item.question);
                 let textArea = document.createElement('textarea');
                 textArea.name = "comment";
                 textArea.placeholder = "Hier typen...";
@@ -71,10 +71,12 @@ fillQuestionnaire = (questionnaireItems) => {
     });
 }
 
+// Create a question label
 addQuestion = (question) => {
     let label = document.createElement('label');
     label.className = "questionnaireItem";
     label.innerHTML = question;
+    return label;
 } 
 
 // Add the Likert scale 
@@ -84,6 +86,7 @@ addLikertScale = (title, likertAmount) => {
     ul.className = "likert";
     for (i=0;i<likertAmount;i++){
         let li = document.createElement("li");
+        li.className = "likert-"+likertAmount;
         let radioBtn = document.createElement("input");
         radioBtn.type = "radio";
         radioBtn.name = title;
@@ -108,32 +111,39 @@ processForm = (e) => {
     console.log("processing evaluation form");
 
     // Put all answers of this questionnaire into a JSON object    
-    var formAnswers = [{}];
+    var formAnswers = {};
     Array.prototype.forEach.call(e.target, function(target){
-        if (target.checked){
-            console.log("checked:"+ target.name +" " + target.value);
-            formAnswers[0][target.name] = target.value;       
+        if (target.checked || target.name == "comment") {
+            // console.log("checked:"+ target.name +" " + target.value);
+            formAnswers[target.name] = target.value;       
         } else {
-            console.log("not checked!");
+            // do nothing
         }
-    })
+    });
 
-    // Check whether the JSON with all the questionnaire answers already exists, if not create one 
-    if (questAnswers == null){
-        var questAnswers = {};
-    } else {
-        questAnswers =  stateController.getLocalStorage('questAnswers');
-    }     
+    // TODO: GET LEVEL NUMBER FROM THE STATECONTROLLER; FOR NOW A DEFAULT VALUE
+    var currLevel = "evalLevel"+2;
     
     // Save the answers from this form in the master JSON as a new entry
-    // GET LEVEL NUMBER FROM THE STATECONTROLLER; FOR NOW A DEFAULT VALUE
-    // var currLevel = stateController.levelSelected;
-    var currLevel = "evalLevel"+2;
-    questAnswers[currLevel] = formAnswers;
+    var qaObj =  stateController.getLocalStorage('levelEvaluations'); // Retrieve evaluation answers object from local storage
+    if (jQuery.isEmptyObject(qaObj)) { // If there's no evaluation answer obj yet, make one 
+        qaObj = {};
+        qaObj[currLevel] = [];
+        qaObj[currLevel].push(formAnswers);
+        stateController.setLocalStorage('levelEvaluations', qaObj);
+    } else {
+        if (qaObj.hasOwnProperty(currLevel)){ // If entry for current level exists, add new evaluations to array
+            qaObj[currLevel].push(formAnswers);
+        } else { // Otherwise make new array for the answers
+            qaObj[currLevel] = [];
+            qaObj[currLevel].push(formAnswers);
+        }
+        stateController.setLocalStorage('levelEvaluations', qaObj); // Save to local storage
+    }
 
-    // questAnswers.levelnr = formAnswers;
-    console.log(JSON.stringify(questAnswers));
-    
+
+    stateController.changeState(2); // return to level select menu
+
     // You must return false to prevent the default form behavior
     return false;
 }
