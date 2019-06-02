@@ -125,10 +125,38 @@ startMovement = () => {
   clearOldListeners = () => {
     for (let i = 0; i < navElements.length; i++) {
       navElements[i].removeEventListener('click', moveHere)
+      navElements[i].removeEventListener('mouseenter', targetMouseEnter)
+      navElements[i].removeEventListener('mouseleave', targetMouseLeave)
       navElements[i].setAttribute('color', 'white')
       navElements[i].setAttribute('height', '0.2')
-
     }
+  }
+
+  targetMouseEnter = (clickEvent) => {
+    console.log(clickEvent.target);
+    
+    clickEvent.target.setAttribute('color', '#ff66ff')
+    clickEvent.target.setAttribute('height', '0.6')
+    var node = document.getElementById('clickStartAnimation');
+    node.setAttribute("from", getCurrentCursorSize())
+    document.getElementById('cursor').appendChild(node);
+  }
+  
+  targetMouseLeave = (clickEvent) => {
+    clickEvent.target.setAttribute('color', '#cc00cc')
+    clickEvent.target.setAttribute('height', '0.5')
+    var node = document.getElementById('clickDoneAnimation');
+    node.setAttribute("from", getCurrentCursorSize())
+    document.getElementById('cursor').appendChild(node);
+  }
+  
+  getCurrentCursorSize = () => {
+    let current_size = document.getElementById('cursor').getAttribute("scale");
+    let newPosText = '';
+    Object.keys(current_size).forEach(function(key) {
+      newPosText += current_size[key]+' ';
+    });
+    return newPosText
   }
 
   setNewTargets = (element) => {
@@ -149,6 +177,7 @@ startMovement = () => {
     while (clickEvent.target.firstChild) {
       clickEvent.target.removeChild(clickEvent.target.firstChild);
     }
+    targetMouseLeave(clickEvent)
     clearOldListeners()
     setNewTargets(clickEvent.target)
     addNewListeners()
@@ -167,7 +196,9 @@ startMovement = () => {
           // if its a match: attach a clickListener
           if (navElements[i].dataset.target === key) {
             navElements[i].addEventListener('click', moveHere)
-            navElements[i].setAttribute('color', 'red')
+            navElements[i].addEventListener('mouseenter', targetMouseEnter)
+            navElements[i].addEventListener('mouseleave', targetMouseLeave)
+            navElements[i].setAttribute('color', '#cc00cc')
             navElements[i].setAttribute('height', '0.5')
           }
         }
