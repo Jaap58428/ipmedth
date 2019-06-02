@@ -23,13 +23,22 @@ h1 {
     cursor: pointer;
 }
 
+.secondary .button {
+
+    background-color: rgb(255, 255, 255);
+    color: rgb(110, 110, 110);
+    font-size: 0.9rem;
+}
+
 .button:hover {
     background-color: #000;
     color: #fff;
 }
 
 .startButton {
+    display: inline-block;
     font-size: 1.4rem;
+    align-self: center
 }
 
 .buttonUnavailable {
