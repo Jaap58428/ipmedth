@@ -1,16 +1,9 @@
 {
     "disclaimerItems": [
-        {
-            "title": "eerste gebruik",
-            "description": "U staat op het punt de VALK VR applicatie voor het eerst compleet te gebruiker. Hiervoor is het noodzakelijk dat u deze punten goed leest en begrijpt."
-        },
+        
         {
             "title": "risico",
             "description": "Gebruik van VALK VR is op eigen risico, altijd in overleg met de aangewezen behandelaar."
-        },
-        {
-            "title": "omgeving",
-            "description": "Zorg voordat u de VR-applicatie start voor een veilige en ruime omgeving waar u geen kans loopt tegen iets aan te stoten."
         },
         {
             "title": "ondersteuning",
@@ -18,11 +11,7 @@
         },
         {
             "title": "cookies",
-            "description": "Deze applicatie maakt gebruik van lokale opslag op uw apparaat. Dit wordt enkel gebruikt om uw persoonlijke voortgang bij te houden. Deze informatie zal nooit met VALK of andere partijen worden gedeeld zonder uw expliciete toestemming en kan ten alle tijden worden gewist op de Instellingen pagina."
-        },
-        {
-            "title": "vrijwillig",
-            "description": "U kunt ten alle tijden stoppen met het gebruik van de applicatie. Wanneer u zich angstig voelt of de ervaring te confronterend voor u is kunt u simpelweg de VR-bril afzetten. Het is echter in het voordeel van uw therapie om in dit soort moment te volharden en proberen door te zetten met behulp van de aangerijkte technieken."
+            "description": "Deze applicatie maakt gebruik van lokale opslag op uw apparaat. Dit wordt enkel gebruikt om uw persoonlijke voortgang bij te houden. Deze informatie zal nooit met VALK of andere partijen worden gedeeld zonder uw toestemming."
         }
     ]
 }

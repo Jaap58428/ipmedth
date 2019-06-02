@@ -20,6 +20,12 @@
     margin-top: 10px;
 }
 
+
+.sliderIntro {
+    font-size: 1.1rem;
+}
+
+
 .slider::-webkit-slider-thumb {
     appearance: none;
     width: 25px;
@@ -38,11 +44,12 @@
 }
 
 #demo {
-    text-align: center
+    text-align: center;
+    font-size: 2rem;
 }
 
 .levelExplaining {
-    font-size: 0.9rem;
+    font-size: 1rem;
 }
 
 .startButton {
