@@ -9,9 +9,9 @@ const main = () => {
         stateController.updateView();
     }
 
-    if (screen.orientation.angle == 0) {
-        alert("Let op! Deze website is bedoeld voor gebruik in landschap modus");
-    }
+    // if (screen.orientation.angle == 0) {
+    //     alert("Let op! Deze website is bedoeld voor gebruik in landschap modus");
+    // }
 
 }
 
