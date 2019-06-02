@@ -74,4 +74,6 @@
 }();
 //# sourceMappingURL=imageMapResizer.map
 
-imageMapResize()
+setTimeout(() => {
+    imageMapResize()
+}, 500)

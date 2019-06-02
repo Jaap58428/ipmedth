@@ -86,7 +86,7 @@ getMovementAnimation = (blockCoordinates) => {
   animation.setAttribute('to', `${newPosition.x} ${newPosition.y + (userHeight / 100) } ${newPosition.z}`)
   animation.setAttribute('fill', 'forwards')
   animation.setAttribute('easing', 'linear')
-  animation.setAttribute('dur', (distance * 300).toString());
+  animation.setAttribute('dur', (distance * 500).toString());
   animation.addEventListener('animationend', checkFinish)
   return animation
 }
