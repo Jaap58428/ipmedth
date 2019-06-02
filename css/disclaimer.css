@@ -16,27 +16,21 @@
     margin-bottom: 10px;
 }
 
-.fader {
-    transition: all 0.5s;
-    position: relative;
-    bottom: 5em;
-    height: 5em;
-    background: linear-gradient(
-        rgba(255, 255, 255, 0) 0%,
-        rgb(141, 141, 141, 1) 100%
-    );
-}
-
 .confirmation {
     display: flex;
-    /* align-content: center; */
     flex-direction: column;
 }
 
+.agreeBox {
+    display: inline-block;
+    height: auto;
+    position: relative;
+    top: -45px;
+}
+
 .buttonBox {
-    margin: 10px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .button {
@@ -45,7 +39,6 @@
     font-size: 1rem;
     background-color: #fff;
     color: #000;
-    /* transition: 0.3s all; */
     padding: 10px 10px;
     display: inline-block;
     border-radius: 0;
@@ -57,7 +50,7 @@
     cursor: pointer;
 }
 
-.agreement{
+.agreement {
     font-weight: bold;
 }
 
@@ -72,35 +65,45 @@ label {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+input[type=checkbox].css-checkbox {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+}
+
+input[type=checkbox].css-checkbox+label.css-label {
+    padding-left: 20px;
+    height: 15px;
+    display: inline-block;
+    line-height: 15px;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    font-size: 15px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+input[type=checkbox].css-checkbox:checked+label.css-label {
+    background-position: 0 -15px;
+}
+
+.css-label {
+    background-image: url(../img/lite-green-check.png);
+}
+
+@media screen and (orientation:portrait) {
+    .scroller {
+        max-height: 60vh;
     }
-    
-    input[type=checkbox].css-checkbox {
-          position: absolute; 
-        overflow: hidden; 
-        clip: rect(0 0 0 0); 
-        height:1px; 
-        width:1px; 
-        margin:-1px; 
-        padding:0;
-        border:0;
+
+    .confirmation {
+        max-width: 80%;
     }
-    
-    input[type=checkbox].css-checkbox + label.css-label {
-        padding-left:20px;
-        height:15px; 
-        display:inline-block;
-        line-height:15px;
-        background-repeat:no-repeat;
-        background-position: 0 0;
-        font-size:15px;
-        vertical-align:middle;
-        cursor:pointer;
-    }
-    
-    input[type=checkbox].css-checkbox:checked + label.css-label {
-        background-position: 0 -15px;
-    }
-    
-    .css-label{
-        background-image:url(../img/lite-green-check.png);
-    }
+}
