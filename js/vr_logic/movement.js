@@ -91,10 +91,6 @@ getMovementAnimation = (blockCoordinates) => {
   return animation
 }
 
-makeTargetVisible = (element) => {
-  // element.appendChild(document.getElementById('navAniHeight').cloneNode(true))
-  // element.appendChild(document.getElementById('navAniColour').cloneNode(true))
-}
 
 setUserOnFirstCoordinate = (navElements) => {
   for (let i = 0; i < navElements.length; i++) {
@@ -129,11 +125,9 @@ startMovement = () => {
   clearOldListeners = () => {
     for (let i = 0; i < navElements.length; i++) {
       navElements[i].removeEventListener('click', moveHere)
-      while (navElements[i].firstChild) {
-        navElements[i].removeChild(navElements[i].firstChild);
-      }
       navElements[i].setAttribute('color', 'white')
       navElements[i].setAttribute('height', '0.2')
+
     }
   }
 
@@ -173,7 +167,8 @@ startMovement = () => {
           // if its a match: attach a clickListener
           if (navElements[i].dataset.target === key) {
             navElements[i].addEventListener('click', moveHere)
-            makeTargetVisible(navElements[i])
+            navElements[i].setAttribute('color', 'red')
+            navElements[i].setAttribute('height', '0.5')
           }
         }
       }
