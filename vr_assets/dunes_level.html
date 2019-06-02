@@ -1,4 +1,4 @@
-<a-scene stats renderer="precision: low; antialias: false; " embedded>
+<a-scene stats renderer="precision: low; antialias: false;" embedded>
   <a-assets>
     <a-asset-item id="treehouse-obj" src="vr_assets/assets/Treehouse.obj"></a-asset-item>
     <a-asset-item id="treehouse-mtl" src="vr_assets/assets/Treehouse.mtl"></a-asset-item>
@@ -16,6 +16,8 @@
     <a-asset-item id="iceberg-mtl" src="vr_assets/assets/iceberg.mtl"></a-asset-item>
     <a-asset-item id="goat-obj" src="vr_assets/assets/Mesh_Goat.obj"></a-asset-item>
     <a-asset-item id="goat-mtl" src="vr_assets/assets/Mesh_Goat.mtl"></a-asset-item>
+
+
 
     <!-- <a-animation id="navAniHeight" attribute="height" from="0.2" to="0.8" direction="alternate" repeat="indefinite"
       dur="1500"></a-animation> -->
@@ -55,12 +57,12 @@
     rotation="0 45 0"></a-entity>
 
   <a-box id="farmground" scale="65 8 45" position="-7.7 2.185 193" color="#bfbf57" opacity="1"></a-box>
-  <a-gltf-model src="assets/Wood Bridge and Environment .gltf" scale="0.007 0.007 0.007" position="-2 0.29 -8.9">
+  <a-gltf-model src="vr_assets/assets/Wood Bridge and Environment .gltf" scale="0.007 0.007 0.007" position="-2 0.29 -8.9">
   </a-gltf-model>
-  <a-gltf-model src="assets/Wood Bridge .gltf" scale="0.007 0.007 0.007" position="9.656 -0.77 -8.9"
+  <a-gltf-model src="vr_assets/assets/Wood Bridge .gltf" scale="0.007 0.007 0.007" position="9.656 -0.77 -8.9"
     rotation="0 0 -13.38"></a-gltf-model>
 
-  <a-entity particle-system="
+  <!-- <a-entity particle-system="
          preset: dust;
          color:#42bcf4, #9bd5ef, #fff;
          particleCount:4000;
@@ -68,9 +70,8 @@
          maxAge: 3;
          dragValue: 0.2;
          type: 2;
-         "
-       rotation="90 38 110" position="34.5 5.7 -0.4">
-     </a-entity>
+         " rotation="90 38 110" position="34.5 5.7 -0.4">
+  </a-entity> -->
 
   <a-entity scale="3.3 3.7 3" rotation="0 -125 0" position="0 -0.216 0" environment="preset: forest; dressingAmount: 380;
         fog: 0.35; ground: canyon;
