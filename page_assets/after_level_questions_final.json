@@ -26,12 +26,12 @@
             "type": "5-likert"
         },
         {
-            "title": "last",
+            "title": "last_algemeen",
             "question": "Ik heb last van hoogtevrees.",
             "type": "10-likert"
         },
         {
-            "title": "omgaan",
+            "title": "omgaan_algemeen",
             "question": "In hoeverre denk je om te kunnen gaan met je angstgevoelens voor hoogtes?",
             "type": "10-likert"
         },

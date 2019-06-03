@@ -52,66 +52,41 @@ updateScoreList = () => {
 
 createChart = () => {
     console.log("Created chart");
+    
+    const colors = {
+        BLUE: 'rgba(96, 191, 255, 0.3)',
+        YELLOW: 'rgba(255, 244, 104, 0.3)',
+        RED: 'rgba(255, 0, 0, 0.3)',
+        GREEN: 'rgba(23, 145, 45, 0.3)',
+        PINK: 'rgba(255, 137, 219, 0.3)',
+    }
+    
+
+    // make seperate chart for the 10-points likert questions.
     ctx = document.getElementById('progressChart');
     currLv = "evalLevel"+currentDisplay; 
     values = [];
-    for(attempt in scores[currLv]){
-        keyNames = Object.keys(scores[currLv][attempt]);
+    dataEntry = [];
+    for (attempt in scores[currLv] && scores[currLv]) {
+        keyNames = Object.keys (scores[currLv][attempt]);
         keyValues = Object.values(scores[currLv][attempt]);
-        let kvArr = [];
-        kvArr[0] = keyValues;
         values.push(keyValues);
-        console.log("key values" + values);    
+        let color = Object.values(colors)[attempt]      
+        let attemptData = {
+            label: "poging " + (attempt),
+            data: values[attempt],
+            backgroundColor: color,
+            borderColor: color,
+            borderWidth: 1
+        }        
+        dataEntry.push(attemptData);
     }
-    
-    /**TODO: make dynamic dataset {} for every attempt, make color ENUM so there's always a color predefined. MAX 5 attempts?
-     * do smth about the background color etc. Make sure it works with the generated data as well.
-     */
 
     progChart = new Chart(ctx, {
         type:'radar',
         data: {
             labels: keyNames, // labels for the different categories (around the graph)
-            datasets: [{
-                label: "attempt 1", 
-                data: values[0], // actual values to be put in (points on the graph)
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.3)',
-                    // 'rgba(54, 162, 235, 0.1)',
-                    // 'rgba(75, 192, 192, 0.6)',
-                    // 'rgba(153, 102, 255, 0.8)',
-                    // 'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 0.1)',
-                    // 'rgba(54, 162, 235, 0.1)',
-                    // 'rgba(255, 206, 86, 1)',
-                    // 'rgba(75, 192, 192, 1)',
-                    // 'rgba(153, 102, 255, 1)',
-                    // 'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            },
-            {
-                label: "attempt 2", 
-                data: values[1], // actual values to be put in (points on the graph)
-                backgroundColor: [
-                    // 'rgba(255, 99, 132, 0.1)',
-                    // 'rgba(54, 162, 235, 0.1)',
-                    'rgba(75, 192, 192, 0.3)',
-                    // 'rgba(153, 102, 255, 0.8)',
-                    // 'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    // 'rgba(255, 99, 132, 0.1)',
-                    // 'rgba(54, 162, 235, 0.1)',
-                    'rgba(255, 206, 86, 1)',
-                    // 'rgba(75, 192, 192, 1)',
-                    // 'rgba(153, 102, 255, 1)',
-                    // 'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }]
+            datasets: dataEntry
         },
         options: {
             scale: {
@@ -189,8 +164,9 @@ startProgress = () => {
         ]
     }
 
-    // scores = stateController.getLocalStorage('questAnswers')
-    scores = scoreExample
+
+    scores = stateController.getLocalStorage('levelEvaluations')
+    // scores = scoreExample
 
     // find highest scored level to display as default
     highestLevel = -1;

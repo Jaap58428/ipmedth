@@ -1,17 +1,17 @@
 {
     "questionnaireItems": [
         {
-            "title": "last",
+            "title": "last_algemeen",
             "question": "Ik heb last van hoogtevrees.",
             "type": "10-likert"
         },
         {
-            "title": "omgaan",
+            "title": "omgaan_algemeen",
             "question": "In hoeverre denk je om te kunnen gaan met je angstgevoelens voor hoogtes?",
             "type": "10-likert"
         },
         {
-            "title": "openheid",
+            "title": "openheid_algemeen",
             "question": "Ik sta open om mijn angsten onder ogen te zien en daar actief mee aan de gang te gaan.",
             "type": "10-likert"
         },
