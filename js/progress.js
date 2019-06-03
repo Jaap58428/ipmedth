@@ -61,7 +61,6 @@ createChart = () => {
         let kvArr = [];
         kvArr[0] = keyValues;
         values.push(keyValues);
-        console.log("key values" + values);    
     }
     
     /**TODO: make dynamic dataset {} for every attempt, make color ENUM so there's always a color predefined. MAX 5 attempts?

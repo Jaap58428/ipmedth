@@ -14,6 +14,8 @@ const main = () => {
 
 AFRAME.registerComponent('supportEntity', {
     schema: {
+      color: {type: 'number'},
+      position: {type: 'string'},
       audio: {type: 'string'},
       checkpoint: {type: 'checkpoint'},
     //   audio: {type: 'string'},
@@ -58,46 +60,55 @@ AFRAME.registerComponent('supportEntity', {
     tick: function (time, timeDelta) {
       // Do something on every scene tick or frame.
     }
-});
+  });
 
+class SupportEntity {
+    constructor() {
+        this.supportEntity = document.createElement('a-box'); 
+        supportEntity.setAttribute('color', 'lightgrey');
+        supportEntity.setAttribute('position', '1 2 2');
 
-startExcercise = () =>{
-    let excercise = this.excSelected;
-    let excName;
-    switch(excercise) {
-        case 0: // breathing exc
-            break;
-        case 2: // meditative exc
-            break;
-        case 4: // instructions for paper cup exc
-            break; 
-        default:
-            console.warn("The chosen excercise does not exist.");
-            break;                   
+        this.excSelected = null;
     }
-    // load things into the entity/scene?
-}
 
-moveSupportEntity = (location) => {
-    switch(location){
-        case "checkpoint1":
-            supportEntity.setAttribute('position', '1 2 2')
-            break;
-        case "checkpoint2":
-            break;
-        case "checkpoint3":
-            break;
-        default:
-            break;        
+    startExcercise() {
+        let excercise = this.excSelected;
+        let excName;
+        switch(excercise) {
+            case 0: // breathing exc
+                break;
+            case 2: // meditative exc
+                break;
+            case 4: // instructions for paper cup exc
+                break; 
+            default:
+                console.warn("The chosen excercise does not exist.");
+                break;                   
+        }
+        // load things into the entity/scene?
     }
-    supportEntityFadeIn();
-}
 
-supportEntityFadeIn = () => {
-    let animation = document.createElement('a-animation');
-    animation.setAttribute('attribute', 'position');
-    animation.setAttribute('dur', '1000');
-}
+    moveSupportEntity(location) {
+        switch(location){
+            case "checkpoint1":
+                supportEntity.setAttribute('position', '1 2 2')
+                break;
+            case "checkpoint2":
+                break;
+            case "checkpoint3":
+                break;
+            default:
+                break;        
+        }
+        supportEntityFadeIn();
+    }
 
+    supportEntityFadeIn() {
+        let animation = document.createElement('a-animation');
+        animation.setAttribute('attribute', 'position');
+        animation.setAttribute('dur', '1000');
+
+    }
+}
 
 window.addEventListener('load', main)
