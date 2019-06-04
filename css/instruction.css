@@ -1,0 +1,33 @@
+.instructionTitle h1{
+  font-size: 3rem;
+  text-align: center;
+}
+.headset{
+  display: none;
+}
+.roomText h2, .headsetText h2{
+  text-align: center;
+}
+.roomText p, .headsetText p{
+  text-align: center;
+}
+.roomImageDiv, .headsetImageDiv{
+  text-align: center;
+  width: 100%;
+}
+.roomImageDiv img, .headsetImageDiv img{
+  max-width: 70%;
+}
+.buttonContainer{
+  text-align: center;
+}
+.nextButton, .prevButton{
+  width: 100px;
+  text-align: center;
+  display:inline-block;
+  color: #fff;
+  background-image: linear-gradient(-45deg, #333, #777);
+  padding: 10px 15px;
+  cursor: pointer;
+  z-index: 999;
+}
