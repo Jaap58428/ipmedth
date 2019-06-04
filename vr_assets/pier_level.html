@@ -2,7 +2,11 @@
   <a-assets>
       <a-animation id="clickStartAnimation" attribute='scale' dur='3000' from='1 1 1' to='8 8 8' easing="ease-out"></a-animation>
       <a-animation id="clickDoneAnimation" attribute='scale' dur='3000' from='8 8 8' to='1 1 1' easing="ease-out"></a-animation>
-      
+      <a-asset-item id="full_pier-obj" src="assets/full_pier_towerground.obj"></a-asset-item>
+      <a-asset-item id="full_pier-mtl" src="assets/full_pier_towerground.mtl"></a-asset-item>
+      <a-asset-item id="full_tower-obj" src="assets/full_tower.obj"></a-asset-item>
+      <a-asset-item id="full_tower-mtl" src="assets/full_tower.mtl"></a-asset-item>
+
   </a-assets>
   <a-box color="tomato" depth="2" height="4" width="0.5"></a-box>
   <a-entity id="scene">
@@ -12,6 +16,8 @@
 
     <a-entity id="ocean" position="47.5 -5 315" rotation="0 60 0" data-oceanWidth="10" data-oceanLength="30"
       data-waveHeight="5" data-oceanResolution="20"></a-entity>
+    <a-entity id="full_pier" obj-model="obj: #full_pier-obj; mtl: #full_pier-mtl" position="37.470 2.722 9.423" scale="0.710 0.970 0.9" rotation="0 145 0"></a-entity>
+    <a-entity id="full_tower" obj-model="obj: #full_tower-obj; mtl: #full_tower-mtl" position="153.015 6.643 47.326" scale="1.500 1.9  1.5" rotation="0 -125 0"></a-entity>
 
     <!-- Moving order is dependend on element order below! -->
     <a-entity id="navigationBox">
