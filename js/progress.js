@@ -39,6 +39,8 @@ changeLevel = (direction) => {
     createChart()
 }
 
+
+// NOT CURRENTLY IN USE
 updateScoreList = () => {
     console.log('scorelist updated');
     let relevantScores = [];
@@ -50,6 +52,8 @@ updateScoreList = () => {
     document.querySelector('#scoreSlider').innerHTML = relevantScores
 }
 
+
+// TODO: MAKE SEPERATE CHART FOR 10PT QUESTIONS; "generalEvaluations"
 createChart = () => {
     console.log("Created chart");
     
@@ -60,13 +64,13 @@ createChart = () => {
         GREEN: 'rgba(23, 145, 45, 0.3)',
         PINK: 'rgba(255, 137, 219, 0.3)',
     }
-    
 
-    // make seperate chart for the 10-points likert questions.
     ctx = document.getElementById('progressChart');
+    // prepares the data to be put into a chart
     currLv = "evalLevel"+currentDisplay; 
     values = [];
     dataEntry = [];
+    var keyNames = [];
     for (attempt in scores[currLv] && scores[currLv]) {
         keyNames = Object.keys (scores[currLv][attempt]);
         keyValues = Object.values(scores[currLv][attempt]);
@@ -166,7 +170,7 @@ startProgress = () => {
 
 
     scores = stateController.getLocalStorage('levelEvaluations')
-    // scores = scoreExample
+    // scores = scoreExample;
 
     // find highest scored level to display as default
     highestLevel = -1;

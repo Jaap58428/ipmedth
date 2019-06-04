@@ -111,11 +111,15 @@ processForm = (e) => {
     console.log("processing evaluation form");
 
     // Put all answers of this questionnaire into a JSON object    
-    var formAnswers = {};
+    var levelAnswers = {};
+    var generalAnswers = {};
     Array.prototype.forEach.call(e.target, function(target){
         if (target.checked || target.name == "comment") {
-            // console.log("checked:"+ target.name +" " + target.value);
-            formAnswers[target.name] = target.value;       
+            if (target.name.includes("_algemeen")){ // answers for the general questions
+                generalAnswers[target.name] = target.value;
+            } else { // answers for the level specific questions
+                levelAnswers[target.name] = target.value;       
+            }
         } else {
             // do nothing
         }
@@ -123,29 +127,33 @@ processForm = (e) => {
 
     // TODO: GET LEVEL NUMBER FROM THE STATECONTROLLER; FOR NOW A DEFAULT VALUE
     var currLevel = "evalLevel"+2;
+    // var currLevel = stateController.levelSelected;
     
-    // Save the answers from this form in the master JSON as a new entry
-    var qaObj =  stateController.getLocalStorage('levelEvaluations'); // Retrieve evaluation answers object from local storage
-    if (jQuery.isEmptyObject(qaObj)) { // If there's no evaluation answer obj yet, make one 
-        qaObj = {};
-        qaObj[currLevel] = [];
-        qaObj[currLevel].push(formAnswers);
-        stateController.setLocalStorage('levelEvaluations', qaObj);
-    } else {
-        if (qaObj.hasOwnProperty(currLevel)){ // If entry for current level exists, add new evaluations to array
-            qaObj[currLevel].push(formAnswers);
-        } else { // Otherwise make new array for the answers
-            qaObj[currLevel] = [];
-            qaObj[currLevel].push(formAnswers);
-        }
-        stateController.setLocalStorage('levelEvaluations', qaObj); // Save to local storage
-    }
-
-
+    saveAsJson('levelEvaluations', currLevel, levelAnswers);
+    saveAsJson('generalEvaluations', currLevel, generalAnswers);
+ 
     stateController.changeState(2); // return to level select menu
 
     // You must return false to prevent the default form behavior
     return false;
+}
+
+saveAsJson = (objName, objPos, answerObj) => {
+    var jsonObj =  stateController.getLocalStorage(objName); // Retrieve evaluation answers object from local storage
+    if (jQuery.isEmptyObject(jsonObj)) { // If there's no evaluation answer obj yet, make one 
+        jsonObj = {};
+        jsonObj[objPos] = [];
+        jsonObj[objPos].push(answerObj);
+        stateController.setLocalStorage(objName, jsonObj);
+    } else {
+        if (jsonObj.hasOwnProperty(objPos)){ // If entry for current level exists, add new evaluations to array
+            jsonObj[objPos].push(answerObj);
+        } else { // Otherwise make new array for the answers
+            jsonObj[objPos] = [];
+            jsonObj[objPos].push(answerObj);
+        }
+        stateController.setLocalStorage(objName, jsonObj); // Save to local storage
+    }
 }
 
 startQuestions();
