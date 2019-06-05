@@ -4,7 +4,6 @@ h1 {
     font-weight: normal;
 }
 
-
 .menuItems {
     padding: 0;
     margin: 0;
@@ -21,8 +20,14 @@ h1 {
     padding: 10px 20px;
     margin: 10px 0;
     font-size: 1rem;
-
     cursor: pointer;
+}
+
+.secondary .button {
+
+    background-color: rgb(255, 255, 255);
+    color: rgb(110, 110, 110);
+    font-size: 0.9rem;
 }
 
 .button:hover {
@@ -31,7 +36,9 @@ h1 {
 }
 
 .startButton {
+    display: inline-block;
     font-size: 1.4rem;
+    align-self: center
 }
 
 .buttonUnavailable {
@@ -42,4 +49,16 @@ h1 {
 .buttonUnavailable:hover {
     background-color: #fff;
     color: #000;
+}
+
+@media screen and (orientation:portrait) {
+    .menuItems {
+        flex-direction: column;
+
+    }
+
+    .button {
+        min-width: 250px;
+
+    }
 }

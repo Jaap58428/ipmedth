@@ -1,5 +1,4 @@
 startLevelSelect = () => {
-    setTimeout(imageMapResize, 100)
     
     let level2button = document.getElementById('level_2_button');
     let level4button = document.getElementById('level_4_button');

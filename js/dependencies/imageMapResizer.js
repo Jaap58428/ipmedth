@@ -73,3 +73,7 @@
     })
 }();
 //# sourceMappingURL=imageMapResizer.map
+
+setTimeout(() => {
+    imageMapResize()
+}, 500)

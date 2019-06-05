@@ -4,6 +4,9 @@ startFirstTime = () => {
     })
 
     let slider = document.getElementById("myRange");
+    if (stateController.getLocalStorage('playerHeight') !== null) {
+        slider.value = stateController.getLocalStorage('playerHeight')
+    }
     let output = document.getElementById("demo");
     output.innerHTML = slider.value + " cm"; // Display the default slider value
 
@@ -12,8 +15,8 @@ startFirstTime = () => {
         output.innerHTML = this.value + " cm";
     }
 
-    let startButton = document.getElementById("startButton");
-    startButton.addEventListener('click', () => {
+    let startTutorial = document.getElementById("startButton");
+    startTutorial.addEventListener('click', () => {
         stateController.setLocalStorage('playedBefore', true)
         stateController.setLocalStorage('playerHeight', slider.value)
         stateController.levelSelected = 0
