@@ -126,8 +126,8 @@ processForm = (e) => {
     });
 
     // TODO: GET LEVEL NUMBER FROM THE STATECONTROLLER; FOR NOW A DEFAULT VALUE
-    var currLevel = "evalLevel"+2;
-    // var currLevel = stateController.levelSelected;
+    // var currLevel = "evalLevel"+2;
+    var currLevel = stateController.levelSelected;
     
     saveAsJson('levelEvaluations', currLevel, levelAnswers);
     saveAsJson('generalEvaluations', currLevel, generalAnswers);
