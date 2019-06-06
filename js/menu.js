@@ -28,9 +28,17 @@ startMenu = () => {
         })
     }
 
-    progressButton.addEventListener('click', () => {
-        stateController.changeState(3)
-    })
+    if (stateController.getLocalStorage('levelEvaluations') == null) {
+        progressButton.classList.add('buttonUnavailable')
+    } else {
+        progressButton.classList.remove('buttonUnavailable')
+
+        progressButton.addEventListener('click', () => {
+            stateController.changeState(3)
+        })
+    }
+
+
     instructionsButton.addEventListener('click', () => {
         stateController.changeState(4)
     })
@@ -53,10 +61,10 @@ Ik heb de volgende feedback:
     })
 
     // test for Hinako's after level questionnaire
-    let questionnaireBtn = document.getElementById('questionnaireBtn')
-    questionnaireBtn.addEventListener('click', () => {
-        stateController.changeState(10)
-    })
+    // let questionnaireBtn = document.getElementById('questionnaireBtn')
+    // questionnaireBtn.addEventListener('click', () => {
+    //     stateController.changeState(10)
+    // })
 }
 
 startMenu();

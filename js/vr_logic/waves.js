@@ -39,7 +39,7 @@
       animation.setAttribute('direction', 'alternate');
       animation.setAttribute('easing', 'ease-in');
       animation.setAttribute('repeat', 'indefinite');
-      animation.setAttribute('delay', '1000');
+      animation.setAttribute('delay', '1500');
 
       // add animation to component based of diagonal 2d raster
       setTimeout(() => {
