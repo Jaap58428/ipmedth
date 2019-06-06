@@ -10,7 +10,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd repeating_web_background-dark_brown.jpg
+map_Kd plain_repeating_web_background-dark_brown.jpg
 
 newmtl Material.002
 Ns 92.156863
@@ -21,7 +21,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd repeating_web_background-dark_brown.jpg
+map_Kd plain_repeating_web_background-dark_brown.jpg
 
 newmtl Material.002_NONE
 Ns 92.156863
@@ -32,7 +32,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd repeating_web_background-dark_brown.jpg
+map_Kd plain_repeating_web_background-dark_brown.jpg
 
 newmtl Material.003
 Ns 92.156863
@@ -43,7 +43,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd repeating_web_background-dark_brown.jpg
+map_Kd plain_repeating_web_background-dark_brown.jpg
 
 newmtl Material.004
 Ns 92.156863
@@ -54,7 +54,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd Untitled.jpg
+map_Kd plain_Untitled.jpg
 
 newmtl Material.005
 Ns 92.156863
@@ -65,7 +65,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd Tileable-Book-Cover-Texture-Hard-Cover-Seamless-1910566.jpg
+map_Kd plain_Tileable-Book-Cover-Texture-Hard-Cover-Seamless-1910566.jpg
 
 newmtl Material.005_NONE
 Ns 92.156863
@@ -76,7 +76,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd Tileable-Book-Cover-Texture-Hard-Cover-Seamless-1910566.jpg
+map_Kd plain_Tileable-Book-Cover-Texture-Hard-Cover-Seamless-1910566.jpg
 
 newmtl Material.006
 Ns 92.156863
@@ -87,7 +87,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd repeating_web_background-dark_brown.jpg
+map_Kd plain_repeating_web_background-dark_brown.jpg
 
 newmtl Material.009
 Ns 92.156863
@@ -98,7 +98,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd repeating_web_background-dark_brown.jpg
+map_Kd plain_repeating_web_background-dark_brown.jpg
 
 newmtl Material.013
 Ns 94.117647
@@ -109,7 +109,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd repeating_web_background-dark_brown.jpg
+map_Kd plain_repeating_web_background-dark_brown.jpg
 
 newmtl Material.014
 Ns 94.117647
@@ -120,7 +120,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd Texture-Old-Natural-Seamless-Wood-Seamless-Texture-1874513.jpg
+map_Kd plain_Texture-Old-Natural-Seamless-Wood-Seamless-Texture-1874513.jpg
 
 newmtl Material.015
 Ns 94.117647
@@ -131,7 +131,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd Seamless-Sand-Background-Texture-1657465.jpg
+map_Kd plain_Seamless-Sand-Background-Texture-1657465.jpg
 
 newmtl Material.016
 Ns 94.117647
@@ -142,7 +142,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd repeating_web_background-dark_brown.jpg
+map_Kd plain_repeating_web_background-dark_brown.jpg
 
 newmtl Material.017
 Ns 94.117647
@@ -153,7 +153,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd Tileable-Book-Cover-Texture-Hard-Cover-Seamless-1910566.jpg
+map_Kd plain_Tileable-Book-Cover-Texture-Hard-Cover-Seamless-1910566.jpg
 
 newmtl Material.018
 Ns 94.117647
@@ -164,7 +164,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd repeating_web_background-dark_brown.jpg
+map_Kd plain_repeating_web_background-dark_brown.jpg
 
 newmtl Material.019
 Ns 94.117647
@@ -175,4 +175,4 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd Untitled.jpg
+map_Kd plain_Untitled.jpg

@@ -10,7 +10,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd repeating_web_background-dark_brown.jpg
+map_Kd plain_repeating_web_background-dark_brown.jpg
 
 newmtl Material.001
 Ns 96.078431
@@ -21,7 +21,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd repeating_web_background-dark_brown.jpg
+map_Kd plain_repeating_web_background-dark_brown.jpg
 
 newmtl Material.005
 Ns 96.078431
@@ -32,7 +32,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd Tileable-Book-Cover-Texture-Hard-Cover-Seamless-1910566.jpg
+map_Kd plain_Tileable-Book-Cover-Texture-Hard-Cover-Seamless-1910566.jpg
 
 newmtl Material.008
 Ns 96.078431
@@ -43,7 +43,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd wood up.jpg
+map_Kd plain_wood up.jpg
 
 newmtl Material.009
 Ns 96.078431
@@ -54,7 +54,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd repeating_web_background-dark_brown.jpg
+map_Kd plain_repeating_web_background-dark_brown.jpg
 
 newmtl Material.009_wood_up.jpg
 Ns 96.078431
@@ -65,4 +65,4 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd wood up.jpg
+map_Kd plain_wood up.jpg
