@@ -90,7 +90,7 @@ getMovementAnimation = (blockCoordinates) => {
   animation.setAttribute('to', `${newPosition.x} ${newPosition.y + (userHeight / 100) } ${newPosition.z}`)
   animation.setAttribute('fill', 'forwards')
   animation.setAttribute('easing', 'linear')
-  animation.setAttribute('dur', (distance * 500).toString());
+  animation.setAttribute('dur', (distance * 400).toString());
   animation.addEventListener('animationend', checkFinish)
   return animation
 }
@@ -118,7 +118,7 @@ setUserOnFirstCoordinate = (navElements) => {
 startMovement = () => {
   // get navigation nodes
   let navElements = document.getElementById('navigationBox').children
-  document.getElementById('camera').setAttribute('wasd-controls', 'enabled', 'false')
+  // document.getElementById('camera').setAttribute('wasd-controls', 'enabled', 'false')
 
   // grab first target(s)
   targetIds = pathConnections[1]
