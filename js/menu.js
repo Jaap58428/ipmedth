@@ -53,10 +53,10 @@ Ik heb de volgende feedback:
     })
 
     // test for Hinako's after level questionnaire
-    let questionnaireBtn = document.getElementById('questionnaireBtn')
-    questionnaireBtn.addEventListener('click', () => {
-        stateController.changeState(10)
-    })
+    // let questionnaireBtn = document.getElementById('questionnaireBtn')
+    // questionnaireBtn.addEventListener('click', () => {
+    //     stateController.changeState(10)
+    // })
 }
 
 startMenu();
