@@ -28,9 +28,17 @@ startMenu = () => {
         })
     }
 
-    progressButton.addEventListener('click', () => {
-        stateController.changeState(3)
-    })
+    if (stateController.getLocalStorage('levelEvaluations') == null) {
+        progressButton.classList.add('buttonUnavailable')
+    } else {
+        progressButton.classList.remove('buttonUnavailable')
+
+        progressButton.addEventListener('click', () => {
+            stateController.changeState(3)
+        })
+    }
+
+
     instructionsButton.addEventListener('click', () => {
         stateController.changeState(4)
     })
