@@ -66,8 +66,12 @@ getFinishScreen = () => {
 
 checkFinish = () => {
   if (targetIds === -1) {
-    console.log('user finished level');
+    let camera = document.querySelector('#camera')
+    let cameraLocation = camera.getAttribute('position')
+    
     document.querySelector('a-scene').appendChild(getFinishScreen())
+    cameraLocation.z -= -3
+    camera.setAttribute('location', (cameraLocation ))
   }
 
 }
