@@ -1,5 +1,6 @@
 var stateController;
 var gameController;
+var devMode = true; // if true, shows alerts for failed tests 
 
 const main = () => {
     //initialize state controller
