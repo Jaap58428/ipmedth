@@ -17,11 +17,19 @@ startFirstTime = () => {
 
     let startTutorial = document.getElementById("startButton");
     startTutorial.addEventListener('click', () => {
+        testSliderInput()
         stateController.setLocalStorage('playedBefore', true)
         stateController.setLocalStorage('playerHeight', slider.value)
         stateController.levelSelected = 0
         stateController.changeState(7)
     })
+
+    // check if slider.value is a legitamate input
+    testSliderInput = () => {
+        testAssert(typeof slider.value === 'string', 'Slider input expected to be a string.')
+        testAssert(Number(slider.value) > 0, 'Slider input expected to be greater than zero.')
+        testAssert(Number(slider.value) < 300, 'Slider input expected to be lesser than 300.')
+    }
 
 }
 

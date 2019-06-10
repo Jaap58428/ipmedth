@@ -1,28 +1,23 @@
-var stateController;
-var gameController;
+var stateController, gameController;
 var devMode = true; // if true, shows errors for failed tests 
 
-var testAssert = (input, expected) => {
-    if (devMode && (input !== expected)) {
-        console.error(`TEST FAILED: "${input}" doesn't equal "${expected}"!`)
+var testAssert = (booleanStatement, expectation) => {
+    if (devMode && !booleanStatement) {
+        console.error(`TEST FAILED! - Expected: ${expectation}`)
     }
 }
 
-let number = 1
-testAssert(number, 2)
-
 const main = () => {
     //initialize state controller
-
     if (stateController == undefined) {
         stateController = new StateController();
         stateController.updateView();
     }
 
-    // if (screen.orientation.angle == 0) {
-    //     alert("Let op! Deze website is bedoeld voor gebruik in landschap modus");
-    // }
-
+    // test for testAssert() function to control its success
+    testAssert(true, 'testAssert() expected to be skipped on true boolean statements')
+    testAssert(1 === 1, 'testAssert() expected to skip on 1 equal 1')
+    testAssert('false', 'testAssert() expected to be skipped on Truthy')
 }
 
 class StateController {
@@ -34,7 +29,6 @@ class StateController {
         }
 
         this.levelSelected = null;
-
     }
 
     startLevel() {
@@ -85,16 +79,21 @@ class StateController {
         document.body.appendChild(jsElm);
     }
 
-    updateView() {
+
+    emptyBody() {
         // remove current view
         let body = document.body;
         while (body.hasChildNodes()) {
             let oldchild = body.removeChild(body.lastChild);
-            // clear element to double check
-            oldchild = null
         }
 
+        // test to check if body has indeed been emptied
+        testAssert(document.body.children.length === 0, 'Document.body expected to have no children.')
 
+    }
+
+    updateView() {
+        this.emptyBody()
 
         // push new view based of state
         switch (this.appState) {
@@ -159,10 +158,16 @@ class StateController {
 
     setLocalStorage(key, object) {
         localStorage.setItem(key, JSON.stringify(object));
+
+        // test to assert setStorage does write to storage
+        testAssert(localStorage.key(0) !== null, 'Localstorage expected to not be empty')
     }
 
     deleteLocalStorage() {
         localStorage.clear();
+
+        // test to assert storage is empty after clearing
+        testAssert(localStorage.key(0) === null, 'Localstorage expected to be empty')
     }
 
 }
@@ -171,7 +176,15 @@ class GameController {
     constructor(playerHeight, pathConnections, levelName) {
         this.playerHeight = playerHeight;
         this.pathConnections = pathConnections
-        $("#body").load(levelName);
+        $("#body").load(levelName, this.testLevelConfig);
+    }
+
+    testLevelConfig() {
+        // the navigation box needs at least 3 items: start, end, pathconnections object
+        testAssert(document.getElementById('navigationBox').children.length >= 3, "navigationBox element expected to have at least 3 children: start- and endnode and a pathconnections object container")
+        
+        testAssert(document.getElementById('camera') !== null, "a-scene expected to have a-camera with the 'camera' id")
+        testAssert(document.getElementById("cursor") !== null, "camera expected to have a cursor")
     }
 
     exitGame() {

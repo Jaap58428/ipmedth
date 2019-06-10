@@ -68,10 +68,10 @@ checkFinish = () => {
   if (targetIds === -1) {
     let camera = document.querySelector('#camera')
     let cameraLocation = camera.getAttribute('position')
-    
+
     document.querySelector('a-scene').appendChild(getFinishScreen())
     cameraLocation.z -= -3
-    camera.setAttribute('location', (cameraLocation ))
+    camera.setAttribute('location', (cameraLocation))
   }
 
 }
@@ -116,6 +116,7 @@ setUserOnFirstCoordinate = (navElements) => {
 }
 
 startMovement = () => {
+
   // get navigation nodes
   let navElements = document.getElementById('navigationBox').children
   document.getElementById('camera').setAttribute('wasd-controls', 'enabled', 'false')
@@ -137,15 +138,13 @@ startMovement = () => {
   }
 
   targetMouseEnter = (clickEvent) => {
-    console.log(clickEvent.target);
-    
     clickEvent.target.setAttribute('color', '#ff66ff')
     clickEvent.target.setAttribute('height', '0.6')
     var node = document.getElementById('clickStartAnimation');
     node.setAttribute("from", getCurrentCursorSize())
     document.getElementById('cursor').appendChild(node);
   }
-  
+
   targetMouseLeave = (clickEvent) => {
     clickEvent.target.setAttribute('color', '#cc00cc')
     clickEvent.target.setAttribute('height', '0.5')
@@ -153,12 +152,12 @@ startMovement = () => {
     node.setAttribute("from", getCurrentCursorSize())
     document.getElementById('cursor').appendChild(node);
   }
-  
+
   getCurrentCursorSize = () => {
     let current_size = document.getElementById('cursor').getAttribute("scale");
     let newPosText = '';
-    Object.keys(current_size).forEach(function(key) {
-      newPosText += current_size[key]+' ';
+    Object.keys(current_size).forEach(function (key) {
+      newPosText += current_size[key] + ' ';
     });
     return newPosText
   }
@@ -214,4 +213,15 @@ startMovement = () => {
   addNewListeners()
 }
 
+testMovement = () => {
+  mockCoordinate1 = {x:1, y:1, z:1}
+  mockCoordinate2 = {x:1, y:1, z:1}
+  mockCoordinate3 = {x:-2, y:5, z:1}
+  testAssert(getCoordinatesDistance(mockCoordinate1, mockCoordinate2) === 0, "getCoordinatesDistance() expected to calculate the distance between two 3D coordinates")
+  testAssert(getCoordinatesDistance(mockCoordinate1, mockCoordinate3) === 5, "getCoordinatesDistance() expected to calculate the distance between two 3D coordinates")
+
+
+}
+
+testMovement();
 startMovement();

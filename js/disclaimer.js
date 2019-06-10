@@ -42,22 +42,10 @@ preventDefaultForm = () => {
         form.addEventListener("submit", processForm);
     }
 }
-controlFader = () => {
-    let list = document.getElementById('disclaimerList');
-    let fader = document.getElementById('fader');
-    list.addEventListener('scroll', () => {
-        if (list.scrollHeight - list.scrollTop === list.clientHeight) {
-            fader.style.opacity = '0'
-        } else {
-            fader.style.opacity = '1'
-        }
-    })
-}
 
 startDisclaimer = () => {
     getDisclaimerItems();
     preventDefaultForm();
-    // controlFader();
 
     document.getElementById('backButton').addEventListener('click', () => {
         stateController.changeState(6)
