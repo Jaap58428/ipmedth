@@ -1,6 +1,15 @@
 var stateController;
 var gameController;
-var devMode = true; // if true, shows alerts for failed tests 
+var devMode = true; // if true, shows errors for failed tests 
+
+var testAssert = (input, expected) => {
+    if (devMode && (input !== expected)) {
+        console.error(`TEST FAILED: "${input}" doesn't equal "${expected}"!`)
+    }
+}
+
+let number = 1
+testAssert(number, 2)
 
 const main = () => {
     //initialize state controller
@@ -65,7 +74,7 @@ class StateController {
         this.updateView();
     }
 
-    loadJsFile (fileLocation) {
+    loadJsFile(fileLocation) {
         // DOM: Create the script element
         let jsElm = document.createElement("script");
         // set the type attribute
@@ -124,11 +133,11 @@ class StateController {
             case 7:
                 this.startLevel(this.levelSelected)
                 break;
-                
+
             case 8:
                 $("#body").load("page_assets/delete_data.html");
                 break;
-                
+
             case 9:
                 $("#body").load("page_assets/change_height.html");
                 break;
@@ -159,7 +168,7 @@ class StateController {
 }
 
 class GameController {
-    constructor (playerHeight, pathConnections, levelName) {
+    constructor(playerHeight, pathConnections, levelName) {
         this.playerHeight = playerHeight;
         this.pathConnections = pathConnections
         $("#body").load(levelName);
