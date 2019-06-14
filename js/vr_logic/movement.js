@@ -119,7 +119,7 @@ startMovement = () => {
 
   // get navigation nodes
   let navElements = document.getElementById('navigationBox').children
-  document.getElementById('camera').setAttribute('wasd-controls', 'enabled', 'false')
+  // document.getElementById('camera').setAttribute('wasd-controls', 'enabled', 'false')
 
   // grab first target(s)
   targetIds = pathConnections[1]
