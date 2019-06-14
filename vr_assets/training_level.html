@@ -8,7 +8,7 @@
   </a-assets>
 
   
-  <a-entity id="exit_plane" geometry="primitive: plane; width: 4; height: 3" position="0 1.5 -2" rotation="0 0 0" material="color: #19224a">
+  <a-entity id="exit_plane" geometry="primitive: plane; width: 4; height: 3" position="0 1.5 -4" rotation="0 0 0" material="color: #19224a">
     <a-text value="Welkom in het trainingslevel" align="center" position="0 1 0"></a-text>
     <a-text value="U kunt door het level navigeren door naar de paarse blokken links of rechts te kijken." align="center" position="0 0.3 0" width="2.5"></a-text>
     <a-text value="<- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  ->" align="center" position="0 -0.5 0" width="6"></a-text>
@@ -19,9 +19,9 @@
   <!-- Moving order is dependend on element order below! -->
   <a-entity id="navigationBox">
     <a-cylinder segments-radial="6" data-target="1" position="0 0.1 0" height="0.2" radius="0.5"></a-cylinder>
-    <a-cylinder segments-radial="6" data-target="2" position="4 0.1 -3" height="0.2" radius="0.5"></a-cylinder>
-    <a-cylinder segments-radial="6" data-target="3" position="-4 0.1 -3" height="0.2" radius="0.5"></a-cylinder>
-    <a-cylinder segments-radial="6" data-target="4" position="0 0.1 -5" height="0.2" radius="0.5"></a-cylinder>
+    <a-cylinder segments-radial="6" data-target="2" position="4 0.1 -4" height="0.2" radius="0.5"></a-cylinder>
+    <a-cylinder segments-radial="6" data-target="3" position="-4 0.1 -4" height="0.2" radius="0.5"></a-cylinder>
+    <a-cylinder segments-radial="6" data-target="4" position="0 0.1 -7" height="0.2" radius="0.5"></a-cylinder>
     <script>
       // define your path connections here relating to the targets above
       // -1 is a endpoint
