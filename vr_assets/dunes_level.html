@@ -1,5 +1,21 @@
 <a-scene renderer="precision: low; antialias: false;" embedded>
   <a-assets>
+
+    <a-curve id="curveBox">
+      <a-curve-point position="-4 0.8 -2"></a-curve-point>
+      <a-curve-point position="-3 0.6 -2"></a-curve-point>
+      <a-curve-point position="-2 0.8 -2"></a-curve-point>
+      <a-curve-point position="-1 0.6 -2"></a-curve-point>
+      <a-curve-point position="0 0.8 -2"></a-curve-point>
+      <a-curve-point position="1 0.6 -2"></a-curve-point>
+      <a-curve-point position="2 0.8 -2"></a-curve-point>
+      <a-curve-point position="3 0.6 -2"></a-curve-point>
+      <a-curve-point position="4 0.8 -2"></a-curve-point>
+      <a-curve-point position="5 0.6 -2"></a-curve-point>
+      <a-curve-point position="6 0.8 -2"></a-curve-point>
+      <a-curve-point position="7 0.6 -2"></a-curve-point>
+    </a-curve>
+
     <a-asset-item id="treehouse-obj" src="vr_assets/assets/Treehouse.obj"></a-asset-item>
     <a-asset-item id="treehouse-mtl" src="vr_assets/assets/Treehouse.mtl"></a-asset-item>
     <a-asset-item id="farm-obj" src="vr_assets/assets/Farm.obj"></a-asset-item>
@@ -17,8 +33,10 @@
     <a-asset-item id="goat-obj" src="vr_assets/assets/Mesh_Goat.obj"></a-asset-item>
     <a-asset-item id="goat-mtl" src="vr_assets/assets/Mesh_Goat.mtl"></a-asset-item>
 
-    <a-animation id="clickStartAnimation" attribute='scale' dur='2000' from='1 1 1' to='6 6 6' easing="ease-out"></a-animation>
-    <a-animation id="clickDoneAnimation" attribute='scale' dur='2000' from='6 6 6' to='1 1 1' easing="ease-out"></a-animation>
+    <a-animation id="clickStartAnimation" attribute='scale' dur='2000' from='1 1 1' to='6 6 6' easing="ease-out">
+    </a-animation>
+    <a-animation id="clickDoneAnimation" attribute='scale' dur='2000' from='6 6 6' to='1 1 1' easing="ease-out">
+    </a-animation>
     <!-- <a-animation id="navAniHeight" attribute="height" from="0.2" to="0.8" direction="alternate" repeat="indefinite"
       dur="1500"></a-animation> -->
     <!-- <a-animation id="navAniColour" attribute="color" from="white" to="red" direction="alternate" repeat="indefinite"
@@ -199,11 +217,24 @@
   </a-entity>
 
   <a-camera id="camera">
-    <a-entity id="cursor" cursor="fuse: true; fuseTimeout: 2000"
-            position="0 0 -1"
-            geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
-            material="color: black; shader: flat; transparent: true; opacity: 0.5">
-          </a-entity>
+
+    <a-entity id="breath" position="0 -1.2 0.3">
+      <a-circle color="red" radius="0.05" position="0 0.8 -2" rotation="0 0 0"
+        material="opacity: 0.5; transparant: true">
+        <a-animation attribute="position" dur="5000" to="0 0.6 -2" easing="ease-in-out" direction="alternate"
+          repeat="indefinite"></a-animation>
+      </a-circle>
+
+      <a-draw-curve curveref="#curveBox" material="shader: line; color: blue">
+        <a-animation attribute="position" dur="10000" to="-2 0 0" easing="linear" direction="normal"
+          repeat="indefinite"></a-animation>
+      </a-draw-curve>
+    </a-entity>
+    <a-entity id="cursor" cursor="fuse: true; fuseTimeout: 2000" position="0 0 -3"
+      geometry="primitive: ring; radiusInner: 0.06; radiusOuter: 0.1"
+      material="color: black; shader: flat; transparent: true; opacity: 0.5">
+    </a-entity>
+
   </a-camera>
 
 </a-scene>
