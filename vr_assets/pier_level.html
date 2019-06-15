@@ -112,15 +112,12 @@
     <a-camera id="camera">
 
         <a-entity id="breath" position="0 -1.2 0.3">
-          <a-circle color="red" radius="0.05" position="0 0.8 -2" rotation="0 0 0"
-            material="opacity: 0.5; transparant: true">
-            <a-animation attribute="position" dur="5000" to="0 0.6 -2" easing="ease-in-out" direction="alternate"
-              repeat="indefinite"></a-animation>
+          <a-circle material="color: #4680dd; shader: flat" radius="0.05" position="0 0.8 -2">
+            <a-animation attribute="position" dur="5000" to="0 0.6 -2" easing="ease-in-out" direction="alternate" repeat="indefinite"></a-animation>
           </a-circle>
     
-          <a-draw-curve curveref="#curveBox" material="shader: line; color: blue">
-            <a-animation attribute="position" dur="10000" to="-2 0 0" easing="linear" direction="normal"
-              repeat="indefinite"></a-animation>
+          <a-draw-curve curveref="#curveBox" material="shader: line; color: #4680dd">
+            <a-animation attribute="position" dur="10000" to="-2 0 0" easing="linear" direction="normal" repeat="indefinite"></a-animation>
           </a-draw-curve>
         </a-entity>
         <a-entity id="cursor" cursor="fuse: true; fuseTimeout: 2000" position="0 0 -3"

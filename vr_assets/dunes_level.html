@@ -130,7 +130,7 @@
     </a-cylinder>
     <a-cylinder segments-radial="6" data-target="13" position="-11.783 4.204 -9.173" height=".25" radius="0.5">
     </a-cylinder>
-    <a-cylinder segments-radial="6" data-target="14" position="-12.161 4.248 -11.293" height=".25" radius="0.5">
+    <a-cylinder segments-radial="6" data-target="14" position="-12.161 4.043 -11.293" height=".25" radius="0.5">
     </a-cylinder>
     <script>
       // define your path connections here relating to the targets above
@@ -209,13 +209,12 @@
   <a-camera id="camera">
 
     <a-entity id="breath" position="0 -1.2 0.3">
-      <a-circle color="red" radius="0.05" position="0 0.8 -2" rotation="0 0 0"
-        material="opacity: 0.5; transparant: true">
+      <a-circle material="color: #4680dd; shader: flat" radius="0.05" position="0 0.8 -2">
         <a-animation attribute="position" dur="5000" to="0 0.6 -2" easing="ease-in-out" direction="alternate"
           repeat="indefinite"></a-animation>
       </a-circle>
 
-      <a-draw-curve curveref="#curveBox" material="shader: line; color: blue">
+      <a-draw-curve curveref="#curveBox" material="shader: line; color: #4680dd">
         <a-animation attribute="position" dur="10000" to="-2 0 0" easing="linear" direction="normal"
           repeat="indefinite"></a-animation>
       </a-draw-curve>
