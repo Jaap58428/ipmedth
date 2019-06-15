@@ -1,3 +1,6 @@
+/* Autor: Jaap Kanbier (2019) */
+
+
 .infoBox {
     text-align: center
 }
@@ -22,7 +25,7 @@
     text-decoration: none;
 }
 
-.startButton:hover{
+.startButton:hover {
     background-color: #000;
     color: #fff;
     cursor: pointer;

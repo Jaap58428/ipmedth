@@ -1,3 +1,5 @@
+/* Autor: Jaap Kanbier (2019) */
+
 .buttonBox {
     display: flex;
     justify-content: space-between;
@@ -11,7 +13,6 @@
     padding: 10px 20px;
     margin: 10px 0;
     font-size: 1rem;
-
     cursor: pointer;
 }
 

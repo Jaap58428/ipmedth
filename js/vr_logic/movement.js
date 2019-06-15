@@ -1,20 +1,36 @@
+/* Autor: Jaap Kanbier (2019) */
+
+// Global parameters
 var pathConnections
 var targetIds;
 
+/**
+ * Function: Calculates the distance between 2 sets of 3D coordinates
+ * Argument: 2 objects containing x,y and z values
+ * Returns: distance value(Number) between two passed coordinates
+ */
 getCoordinatesDistance = (oldPosition, newPosition) => {
   let productX = Number(newPosition.x) - Number(oldPosition.x);
   let productY = Number(newPosition.y) - Number(oldPosition.y);
   let productZ = Number(newPosition.z) - Number(oldPosition.z);
 
+  // mathematic function for producing the distance between 2 points in 3D space
   return Math.sqrt((productX * productX) + (productY * productY) + (productZ * productZ))
 
 }
 
+/**
+ * Function: produces a html-element for the player to use to exit the current VR level
+ * Arguments: none
+ * Returns: html node (a-entity) destined for using in a-scene
+ */
 getFinishScreen = () => {
+  // get current player location and set location 3 meters ahead
   let camera = document.getElementById("camera")
   xyz = camera.getAttribute('position')
   xyz.z += -3
 
+  // generate exitscreen plane and set attributes
   let exitScreen = document.createElement('a-entity')
   exitScreen.setAttribute('geometry', 'primitive', 'plane')
   exitScreen.setAttribute('geometry', 'width', '4')
@@ -23,12 +39,14 @@ getFinishScreen = () => {
   exitScreen.setAttribute('material', 'color', '#19224a')
   exitScreen.setAttribute('material', 'opacity', '0')
 
+  // Generate first text and add to exitplane
   let text1 = document.createElement('a-text')
   text1.setAttribute('value', "Niveau geslaagd!")
   text1.setAttribute('align', "center")
   text1.setAttribute('position', "0 1 0")
   exitScreen.appendChild(text1)
 
+  // generate second text and add to exitplane
   let text2 = document.createElement('a-text')
   text2.setAttribute('value', "U kunt de telefoon nu afzetten en klikken op Afsluiten")
   text2.setAttribute('align', "center")
@@ -36,6 +54,7 @@ getFinishScreen = () => {
   text2.setAttribute('width', "2.5")
   exitScreen.appendChild(text2)
 
+  // generate third text and add to exitplane
   let text3 = document.createElement('a-text')
   text3.setAttribute('value', "AFSLUITEN")
   text3.setAttribute('align', "center")
@@ -43,6 +62,7 @@ getFinishScreen = () => {
   text3.setAttribute('width', "3")
   exitScreen.appendChild(text3)
 
+  // generate exitbutton, add eventlistener (click) and add to exitscreen
   let exitButton = document.createElement('a-entity')
   exitButton.setAttribute('geometry', 'primitive', 'plane')
   exitButton.setAttribute('geometry', 'width', '2.5')
@@ -54,6 +74,7 @@ getFinishScreen = () => {
   })
   exitScreen.appendChild(exitButton)
 
+  // generate exitscreen intro animation and add to exitscreen
   let animation = document.createElement('a-animation');
   animation.setAttribute('attribute', 'material.opacity')
   animation.setAttribute('from', '0')
@@ -64,11 +85,17 @@ getFinishScreen = () => {
   return exitScreen
 }
 
+/**
+ * Function: Check if the user is on a final coordinate node
+ * Arguments: none
+ * Returns: none
+ */
 checkFinish = () => {
   if (targetIds === -1) {
     let camera = document.querySelector('#camera')
     let cameraLocation = camera.getAttribute('position')
 
+    // Append exitscreen to current location so user can complete level
     document.querySelector('a-scene').appendChild(getFinishScreen())
     cameraLocation.z -= -3
     camera.setAttribute('location', (cameraLocation))
@@ -76,34 +103,52 @@ checkFinish = () => {
 
 }
 
+/**
+ * Function: get animation to move from current location to selected location with precondigured speed
+ * Arguments: coordinates of destination location
+ * Returns: a-animation html node
+ */
 getMovementAnimation = (blockCoordinates) => {
 
+  // create animation and start/end locations
   let animation = document.createElement('a-animation');
   let oldPosition = document.getElementById('camera').getAttribute('position')
   let newPosition = blockCoordinates.getAttribute('position')
 
+  // get required secondary values
   let userHeight = gameController.playerHeight
   let distance = getCoordinatesDistance(oldPosition, newPosition)
 
+  // set animation attributes
   animation.setAttribute('attribute', 'position')
   animation.setAttribute('from', `${oldPosition.x} ${oldPosition.y} ${oldPosition.z}`)
   animation.setAttribute('to', `${newPosition.x} ${newPosition.y + (userHeight / 100) } ${newPosition.z}`)
   animation.setAttribute('fill', 'forwards')
   animation.setAttribute('easing', 'linear')
+
+  // animation speed depends indirectly on the time it will take
+  // the time is derived from the distance times a value
+  // here we use the calculated distance between 2 points
   animation.setAttribute('dur', (distance * 400).toString());
+
   animation.addEventListener('animationend', checkFinish)
   return animation
 }
 
-
+/**
+ * Function: Put the user on the coordinates with data-target 1
+ * arguments: complete set of coordinates
+ * returns: null 
+ */
 setUserOnFirstCoordinate = (navElements) => {
   for (let i = 0; i < navElements.length; i++) {
-    // if its a match: attach a clickListener
+    // loop over all data-targets
     if (navElements[i].dataset.target === "1") {
       let position = navElements[i].getAttribute('position')
 
       // position can sometimes be object and sometimes a string
       if (typeof position === "object") {
+        // add the players set height (from cm to meter) to the coordinate
         position.y += gameController.playerHeight / 100
         document.getElementById('camera').setAttribute('position', position)
       } else {
@@ -115,18 +160,27 @@ setUserOnFirstCoordinate = (navElements) => {
   }
 }
 
+/**
+ * Function: start the script for this file
+ * Arguments: null
+ * Returns: null
+ */
 startMovement = () => {
 
   // get navigation nodes
   let navElements = document.getElementById('navigationBox').children
   document.getElementById('camera').setAttribute('wasd-controls', 'enabled', 'false')
 
-  // grab first target(s)
+  // grab first target(s) children
   targetIds = pathConnections[1]
 
   setUserOnFirstCoordinate(navElements)
 
-  // remove old attributes so user can't make invalid moves
+  /**
+   * Function: remove old attributes so user can't make invalid moves, used for callbacks
+   * Arguments: null
+   * returns: null
+   */
   clearOldListeners = () => {
     for (let i = 0; i < navElements.length; i++) {
       navElements[i].removeEventListener('click', moveHere)
@@ -137,6 +191,11 @@ startMovement = () => {
     }
   }
 
+  /**
+   * Function: Callback for event to attach to coordinates which reacts to mouse entering
+   * Arguments: event
+   * Returns: null
+   */
   targetMouseEnter = (clickEvent) => {
     clickEvent.target.setAttribute('color', '#ff66ff')
     clickEvent.target.setAttribute('height', '0.6')
@@ -145,6 +204,11 @@ startMovement = () => {
     document.getElementById('cursor').appendChild(node);
   }
 
+  /**
+   * Function: Callback for event to attach to coordinates which reacts to mouse leaving
+   * Arguments: event
+   * Returns: null
+   */
   targetMouseLeave = (clickEvent) => {
     clickEvent.target.setAttribute('color', '#cc00cc')
     clickEvent.target.setAttribute('height', '0.5')
@@ -153,6 +217,11 @@ startMovement = () => {
     document.getElementById('cursor').appendChild(node);
   }
 
+  /**
+   * Function: get the current cursor size in scale attribute
+   * Arguments: null
+   * returns: string with 3 scale coordinates ('1 1 1')
+   */
   getCurrentCursorSize = () => {
     let current_size = document.getElementById('cursor').getAttribute("scale");
     let newPosText = '';
@@ -162,11 +231,17 @@ startMovement = () => {
     return newPosText
   }
 
+  /**
+   * Function: Loops over current possible targets and matches it to clicked target
+   * Argument: clicked target
+   * Returns: null
+   */
   setNewTargets = (element) => {
     newTargetsIds = targetIds[key]
     for (key in targetIds) {
       if (targetIds.hasOwnProperty(key)) {
         if (element.dataset.target === key) {
+          // set new targets to clicked target's children
           targetIds = targetIds[key]
         }
       }
@@ -174,7 +249,11 @@ startMovement = () => {
 
   }
 
-  // add movement animation to user's location at click
+  /**
+   * Function: add movement animation to user's location at click
+   * Argument: clicked target
+   * Returns: null
+   */
   moveHere = (clickEvent) => {
     document.getElementById('camera').appendChild(getMovementAnimation(clickEvent.target))
     while (clickEvent.target.firstChild) {
@@ -186,7 +265,11 @@ startMovement = () => {
     addNewListeners()
   }
 
-  // add listeners to the new possible targets
+  /**
+   * Function: add listeners to the new possible targets
+   * ARguments: none
+   * Returns: none
+   */
   addNewListeners = () => {
     let newTargetsIds;
     // loop through new targetsId's
@@ -213,15 +296,30 @@ startMovement = () => {
   addNewListeners()
 }
 
+
+// tester for critical distance function
 testMovement = () => {
-  mockCoordinate1 = {x:1, y:1, z:1}
-  mockCoordinate2 = {x:1, y:1, z:1}
-  mockCoordinate3 = {x:-2, y:5, z:1}
+  mockCoordinate1 = {
+    x: 1,
+    y: 1,
+    z: 1
+  }
+  mockCoordinate2 = {
+    x: 1,
+    y: 1,
+    z: 1
+  }
+  mockCoordinate3 = {
+    x: -2,
+    y: 5,
+    z: 1
+  }
   testAssert(getCoordinatesDistance(mockCoordinate1, mockCoordinate2) === 0, "getCoordinatesDistance() expected to calculate the distance between two 3D coordinates")
   testAssert(getCoordinatesDistance(mockCoordinate1, mockCoordinate3) === 5, "getCoordinatesDistance() expected to calculate the distance between two 3D coordinates")
 
 
 }
 
+// Kick off scripts
 testMovement();
 startMovement();

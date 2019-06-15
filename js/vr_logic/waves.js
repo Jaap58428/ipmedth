@@ -1,4 +1,9 @@
-  fillOcean = (ocean, oceanLength, oceanWidth, waveHeight, oceanResolution) => {
+/* Autor: Jaap Kanbier (2019) */
+
+/**
+ * 
+ */
+fillOcean = (ocean, oceanLength, oceanWidth, waveHeight, oceanResolution) => {
       // cycle through columns and rows to fill ocean with elements
       for (let row = 0; row < oceanLength; row++) {
           for (let column = 0; column < oceanWidth; column++) {

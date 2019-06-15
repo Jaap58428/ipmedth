@@ -1,15 +1,18 @@
+/* Autors: Jaap Kanbier (2019), Hinako Ogawa (2019) */
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.levelDownButton, .levelUpButton {
+.levelDownButton,
+.levelUpButton {
     background-color: white;
     cursor: pointer;
 }
 
-.levelDownButton:hover, .levelUpButton:hover {
+.levelDownButton:hover,
+.levelUpButton:hover {
     background-color: #000;
     color: white;
 }

@@ -1,3 +1,4 @@
+/* Autor: Jaap Kanbier (2019) */
 h1 {
     text-align: center;
     font-size: 3rem;
@@ -24,18 +25,14 @@ h1 {
     min-width: 125px;
 }
 
-.iconContainer {
-
-}
-
-.iconContainer img{
+.iconContainer img {
     height: 20px;
     position: relative;
     top: 5px;
     margin: 0 5px;
 }
 
-.startIcon img{
+.startIcon img {
     height: 24px;
 }
 

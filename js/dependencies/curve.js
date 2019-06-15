@@ -1,3 +1,10 @@
+/**
+ * aframe-curve-component
+ * 0.1.3 • Public • Published 2 years ago
+ * https://www.npmjs.com/package/aframe-curve-component
+ */
+
+
 ! function (e) {
     function t(n) {
         if (i[n]) return i[n].exports;
