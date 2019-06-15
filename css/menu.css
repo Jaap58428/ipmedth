@@ -24,16 +24,29 @@ h1 {
     min-width: 125px;
 }
 
-.secondary .button {
+.iconContainer {
 
+}
+
+.iconContainer img{
+    height: 20px;
+    position: relative;
+    top: 5px;
+    margin: 0 5px;
+}
+
+.startIcon img{
+    height: 24px;
+}
+
+.secondary .button {
     background-color: rgb(255, 255, 255);
     color: rgb(110, 110, 110);
     font-size: 0.9rem;
 }
 
 .button:hover {
-    background-color: #000;
-    color: #fff;
+    filter: invert(100%)
 }
 
 .startButton {
