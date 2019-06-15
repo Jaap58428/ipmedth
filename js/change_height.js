@@ -1,3 +1,4 @@
+/* Autor: Jaap Kanbier (2019) */
 startSettings = () => {
 
     let slider = document.getElementById("myRange");
@@ -10,12 +11,12 @@ startSettings = () => {
         output.innerHTML = this.value + " cm";
     }
 
+    // add clicklistener to buttons
     document.getElementById('submitButton').addEventListener('click', ()=>{
         testSliderInput()
         stateController.setLocalStorage('playerHeight', slider.value)
         stateController.changeState(5)
     })
-
     document.getElementById('returnButton').addEventListener('click', ()=>{
         stateController.changeState(5)
     })
@@ -31,4 +32,5 @@ startSettings = () => {
 
 }
 
+// Start page logic
 startSettings();
