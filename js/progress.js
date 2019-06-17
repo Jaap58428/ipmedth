@@ -34,29 +34,10 @@ changeLevel = (direction) => {
 
     document.getElementById('title').innerHTML = "Level " + currentDisplay
     checkButtonsDisplay()
-
-    // updateScoreList()
     createChart()
 }
 
-
-// NOT CURRENTLY IN USE
-updateScoreList = () => {
-    console.log('scorelist updated');
-    let relevantScores = [];
-    for (const key in scores) {
-        if (scores.hasOwnProperty(key) && Number(key.substr(9)) == currentDisplay) {
-            relevantScores.push(scores[key])
-        }
-    }
-    document.querySelector('#scoreSlider').innerHTML = relevantScores
-}
-
-
-// TODO: MAKE SEPERATE CHART FOR 10PT QUESTIONS; "generalEvaluations"
-createChart = () => {
-    console.log("Created chart");
-    
+createChart = () => {   
     const colors = {
         YELLOW: 'rgba(255, 244, 104, 0.3)',
         RED: 'rgba(255, 0, 0, 0.3)',
@@ -69,12 +50,21 @@ createChart = () => {
     ctx = document.getElementById('progressChart');
     // prepares the data to be put into a chart
     currLv = currentDisplay; 
+    evaluationObj = generalEval;
+    maxTicks = 0;
     values = [];
     dataEntry = [];
-    var keyNames = [];
-    for (attempt in scores[currLv] && scores[currLv]) {
-        keyNames = Object.keys (scores[currLv][attempt]);
-        keyValues = Object.values(scores[currLv][attempt]);
+    keyNames = [];
+    if(currLv != 0){
+        evaluationObj = scores;
+        maxTicks = 5
+    } else{
+        evaluationObj = generalEval;
+        maxTicks = 10
+    }
+    for (attempt in evaluationObj[currLv] && evaluationObj[currLv]) {
+        keyNames = Object.keys (evaluationObj[currLv][attempt]);
+        keyValues = Object.values(evaluationObj[currLv][attempt]);
         values.push(keyValues);
         let color = Object.values(colors)[attempt]      
         let attemptData = {
@@ -85,12 +75,47 @@ createChart = () => {
             borderWidth: 1
         }        
         dataEntry.push(attemptData);
-    }
+    }    
+
+    categoryLabels = [];
+    catLabel="";
+    keyNames.forEach(element => {
+        switch(element){
+            case "moeite": 
+                catLabel = "moeite met level"
+                break;
+            case "zelfverzekerd": 
+                catLabel = "zelfverzekerd te halen"
+                break;
+            case "situatie": 
+                catLabel = "wist probleem aan te pakken"
+                break;
+            case "omgaan": 
+                catLabel = "na afronding zelfverzekerder"
+                break;
+            case "klachten": 
+                catLabel = "misselijk en duizelig"
+                break;
+            case "last_algemeen": 
+                catLabel = "Ik heb last van hoogtevrees."
+                break;
+            case "omgaan_algemeen": 
+                catLabel = "omgang met angstgevoelens"
+                break;    
+            case "openheid_algemeen": 
+                catLabel = "bereid angst onder ogen zien"
+                break;
+            default:
+                break;
+            }
+            categoryLabels.push(catLabel)
+    });
+    
 
     progChart = new Chart(ctx, {
         type:'radar',
         data: {
-            labels: keyNames, // labels for the different categories (around the graph)
+            labels: categoryLabels, // labels for the different categories (around the graph)
             datasets: dataEntry
         },
         options: {
@@ -98,7 +123,7 @@ createChart = () => {
                 ticks: {
                     // display: false,
                     beginAtZero: true,
-                    max: 5,
+                    max: maxTicks,
                     stepSize: 1,
                     showLabelBackdrop: false,   
                     fontColor: 'rgba(0, 0, 0, 0.4)',
@@ -121,66 +146,15 @@ startProgress = () => {
         changeLevel(+1)
     })
 
-    let scoreExample = {
-        "evalLevel2": [{
-                "zelfverzekerd": "1",
-                "situatie": "2",
-                "omgaan": "3",
-                "klachten": "4"
-            },
-            {
-                "zelfverzekerd": "4",
-                "situatie": "3",
-                "omgaan": "2",
-                "klachten": "1"
-            }
-        ],
-        "evalLevel0": [{
-                "zelfverzekerd": "0",
-                "situatie": "2",
-                "omgaan": "1",
-                "klachten": "4"
-            },
-            {
-                "zelfverzekerd": "4",
-                "situatie": "2",
-                "omgaan": "2",
-                "klachten": "1"
-            }
-        ],
-        "evalLevel4": [{
-                "zelfverzekerd": "1",
-                "situatie": "0",
-                "omgaan": "3",
-                "klachten": "2"
-            },
-            {
-                "zelfverzekerd": "4",
-                "situatie": "1",
-                "omgaan": "2",
-                "klachten": "1"
-            },
-            {
-                "zelfverzekerd": "0",
-                "situatie": "3",
-                "omgaan": "1",
-                "klachten": "4"
-            }
-        ]
-    }
-
-
-    scores = stateController.getLocalStorage('levelEvaluations')
-    console.log(scores);
+    scores = stateController.getLocalStorage('levelEvaluations');
+    generalEval = stateController.getLocalStorage('generalEvaluations');
     
-    // scores = scoreExample;
-
     // find highest scored level to display as default
     highestLevel = -1;
     levelsDone = []
     for (const key in scores) {
         if (scores.hasOwnProperty(key)) {
-            levelNumber = Number(key)
+            levelNumber = Number(key);
             if (levelNumber > highestLevel) {
                 highestLevel = levelNumber
             }
@@ -198,24 +172,12 @@ startProgress = () => {
 
     document.getElementById('title').innerHTML = "Level " + currentDisplay
     checkButtonsDisplay(levelsDone, currentDisplay)
-    // updateScoreList()
     createChart();
 
+    console.log(levelsDone);
+    
     console.log('highest: ', highestLevel, levelsDone);
     console.log('last item ', levelsDone[levelsDone.length - 1]);
-
-
-
-    //grab scores from storage
-    // see which levels are done
-    // default show highest level done?
-    // for every type of level make a slide 
-    // within every slide: make a graph per question?
-    // for example: qustion 1 -> scorces over time, q2 -> over time, etc.
-
-
-
-
 }
 
 startProgress();

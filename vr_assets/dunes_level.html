@@ -33,6 +33,10 @@
     <a-asset-item id="goat-obj" src="vr_assets/assets/Mesh_Goat.obj"></a-asset-item>
     <a-asset-item id="goat-mtl" src="vr_assets/assets/Mesh_Goat.mtl"></a-asset-item>
 
+    <img id="npc-png" src="vr_assets/assets/lamp.png">
+
+    <audio id="therapy-mp3" src="vr_assets/assets/therapy.mp3" preload="auto"></audio>
+
     <a-animation id="clickStartAnimation" attribute='scale' dur='2000' from='1 1 1' to='6 6 6' easing="ease-out">
     </a-animation>
     <a-animation id="clickDoneAnimation" attribute='scale' dur='2000' from='6 6 6' to='1 1 1' easing="ease-out">
@@ -73,7 +77,6 @@
     scale="0.110 0.070 0.030" rotation="90 45 0"></a-entity>
   <a-entity id="goat" obj-model="obj: #goat-obj; mtl: #goat-mtl" position="-77.277 16.555 64.357" scale="0.02 0.02 0.02"
     rotation="0 45 0"></a-entity>
-
   <a-box id="farmground" scale="65 8 45" position="-7.7 2.185 193" color="#bfbf57" opacity="1"></a-box>
   <a-gltf-model src="vr_assets/assets/Wood Bridge and Environment .gltf" scale="0.007 0.007 0.007"
     position="-2 0.29 -8.9">
@@ -99,8 +102,6 @@
         dressingScale: 1; dressingVariance: 1.5 2.5 1.5; dressingColor: #2b5412;
         groundYScale: 4;">
   </a-entity>
-
-
 
   <!-- Moving order is dependend on element order below! -->
   <a-entity id="navigationBox">
@@ -225,6 +226,15 @@
     </a-entity>
 
   </a-camera>
+
+  
+  <!-- Support NPC -->
+  <a-entity id="supportNpc" position="4.127 2.468 -15.136" look-at="#camera">
+    <a-plane material="src:#npc-png" width="1.5" height="1.5" position="0 3 -3" opacity="0.5" sound="src:#therapy-mp3; autoplay:true">
+        <a-animation attribute="opacity" dur="5000" to="1" easing="ease-in-out" direction="alternate"
+          repeat="indefinite"></a-animation>
+    </a-plane>
+</a-entity>
 
 </a-scene>
 
