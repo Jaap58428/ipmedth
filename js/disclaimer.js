@@ -1,3 +1,4 @@
+/* Author: Jaap Kanbier (2019) */
 fillDisclaimer = (disclaimerItems) => {
     let ul = document.getElementById("disclaimerList");
 
@@ -9,16 +10,24 @@ fillDisclaimer = (disclaimerItems) => {
     });
 }
 
- getDisclaimerItems = () => {
+/**
+ * Function: loads strings of disclaimer texts from accompanied file
+ * Arguments: null
+ * Returns: null
+ */
+getDisclaimerItems = () => {
+    // loads JSON file with sets of disclaimers strings
     $.getJSON("page_assets/disclaimerItems.json", (response) => {
+        // at callback fill the items in UI
         fillDisclaimer(response.disclaimerItems)
     })
 }
 
-submitDisclaimer = () => {
-    console.log('disclaim submited');
-}
-
+/**
+ * Function: Proces form and check input
+ * Arguments: clickevent
+ * Returns: false
+ */
 processForm = (e) => {
     if (e.preventDefault) e.preventDefault();
 
@@ -34,6 +43,11 @@ processForm = (e) => {
     return false;
 }
 
+/**
+ * Function: Setup form to not use default html functionality
+ * ARgument: none
+ * Returns: none
+ */
 preventDefaultForm = () => {
     let form = document.getElementById('agreementForm');
     if (form.attachEvent) {
@@ -43,13 +57,20 @@ preventDefaultForm = () => {
     }
 }
 
+/**
+ * Function: global page logic
+ * Arguments: none
+ * Returns: none
+ */
 startDisclaimer = () => {
     getDisclaimerItems();
     preventDefaultForm();
 
+    // ad clicklistener to back button
     document.getElementById('backButton').addEventListener('click', () => {
         stateController.changeState(6)
     })
 }
 
+// start page script
 startDisclaimer()

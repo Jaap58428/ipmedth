@@ -1,8 +1,10 @@
-/* Autor: Jaap Kanbier (2019) */
+/* Author: Jaap Kanbier (2019) */
 startSettings = () => {
 
     let slider = document.getElementById("myRange");
     let output = document.getElementById("demo");
+
+    // get potential existing player height
     slider.value = stateController.getLocalStorage('playerHeight')
     output.innerHTML = slider.value + " cm"; // Display the default slider value
 

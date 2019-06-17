@@ -1,16 +1,27 @@
+/* Author: Jaap Kanbier (2019) */
+
+// global accesible variables
 var stateController, gameController;
 var devMode = true; // if true, shows errors for failed tests 
 
+// global accessible test container
 var testAssert = (booleanStatement, expectation) => {
+    // when devmode is on: show testing errors
     if (devMode && !booleanStatement) {
         console.error(`TEST FAILED! - Expected: ${expectation}`)
     }
 }
 
+/**
+ * Function: main code of application, starts the rest of the application
+ * Argument: none
+ * Returns: none
+ */
 const main = () => {
     //initialize state controller
     if (stateController == undefined) {
         stateController = new StateController();
+        // set first view on UI
         stateController.updateView();
     }
 
@@ -22,6 +33,8 @@ const main = () => {
 
 class StateController {
     constructor() {
+        // when statecontroller is initialized check if the app has been used before
+        // if so show the menu, otherwise show app intro
         if (this.getLocalStorage('disclaimerAgreement')) {
             this.appState = 2;
         } else {
@@ -31,9 +44,11 @@ class StateController {
         this.levelSelected = null;
     }
 
+    /**
+     * Function: load and start a currently selected VR level
+     */
     startLevel() {
         let level = this.levelSelected
-        // this.levelSelected = null
 
         let levelName = "vr_assets/"
         switch (level) {
@@ -53,21 +68,34 @@ class StateController {
                 break;
         }
 
+        // Get userHeight value as argument for new level
         let playerHeight = this.getLocalStorage('playerHeight')
         let pathConnections = null;
+
+        // Initialize level
         gameController = new GameController(playerHeight, pathConnections, levelName)
 
     }
 
+
+    /**
+     * Function: gets current state of interaction
+     * Returns: appState
+     */
     getState() {
         return this.appState
     }
 
+    /**
+     * Function: set statecontroller to next state
+     * ARguments: next state : Number
+     */
     changeState(newState) {
         this.appState = newState;
         this.updateView();
     }
 
+    // Puts a chosen component as the new UI in the index body element
     loadJsFile(fileLocation) {
         // DOM: Create the script element
         let jsElm = document.createElement("script");
@@ -80,6 +108,7 @@ class StateController {
     }
 
 
+    // Flushes the current UI by removing all body's children
     emptyBody() {
         // remove current view
         let body = document.body;
@@ -92,6 +121,7 @@ class StateController {
 
     }
 
+    // Change the UI based of state values to corresponding filelocations
     updateView() {
         this.emptyBody()
 
@@ -151,11 +181,13 @@ class StateController {
         }
     }
 
+    // Retrieve stored values with key as argument
     getLocalStorage(key) {
         let data = localStorage.getItem(key)
         return JSON.parse(data);
     }
 
+    // Save values with key and value as argument
     setLocalStorage(key, object) {
         localStorage.setItem(key, JSON.stringify(object));
 
@@ -163,6 +195,7 @@ class StateController {
         testAssert(localStorage.key(0) !== null, 'Localstorage expected to not be empty')
     }
 
+    // Delete all storage
     deleteLocalStorage() {
         localStorage.clear();
 
@@ -192,4 +225,5 @@ class GameController {
     }
 }
 
+// Start application as soon as all assets are loaded
 window.addEventListener('load', main)

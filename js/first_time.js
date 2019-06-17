@@ -1,9 +1,13 @@
+/* Author: Jaap Kanbier (2019) */
 startFirstTime = () => {
+    // add clicklisteners to button
     document.getElementById('backButton').addEventListener('click', () => {
         stateController.changeState(2)
     })
 
     let slider = document.getElementById("myRange");
+
+    // if the user has height saved, get and show this
     if (stateController.getLocalStorage('playerHeight') !== null) {
         slider.value = stateController.getLocalStorage('playerHeight')
     }
@@ -15,11 +19,17 @@ startFirstTime = () => {
         output.innerHTML = this.value + " cm";
     }
 
+    // set clicklistener on submit button
     let startTutorial = document.getElementById("startButton");
     startTutorial.addEventListener('click', () => {
+        // validate user input
         testSliderInput()
+
+        // set stored values for future use
         stateController.setLocalStorage('playedBefore', true)
         stateController.setLocalStorage('playerHeight', slider.value)
+
+        // start first level
         stateController.levelSelected = 0
         stateController.changeState(7)
     })

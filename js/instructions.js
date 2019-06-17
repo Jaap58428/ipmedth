@@ -1,3 +1,4 @@
+/* Author: Dick van Delft (2019) */
 startInstructions = () => {
     stateController.setLocalStorage('instructionsViewed', true)
 
