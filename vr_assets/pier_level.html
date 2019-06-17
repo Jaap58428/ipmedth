@@ -1,5 +1,5 @@
 <!-- Author: Thomas de Bruijn (2019), Jaap Kanbier (2019), Dick van Delft(2019), Hinako Ogawa (2019) -->
-<a-scene renderer="precision: low; antialias: false;" embedded>
+<a-scene id="scene" renderer="precision: low; antialias: false;" embedded>
   <a-assets>
     <a-animation id="clickStartAnimation" attribute='scale' dur='2000' from='1 1 1' to='6 6 6' easing="ease-out">
     </a-animation>
@@ -10,73 +10,88 @@
     <a-asset-item id="full_tower-obj" src="vr_assets/assets/full_tower.obj"></a-asset-item>
     <a-asset-item id="full_tower-mtl" src="vr_assets/assets/full_tower.mtl"></a-asset-item>
 
-    
+    <img id="npc-png" src="vr_assets/assets/lamp.png">
+
     <a-curve id="curveBox">
-        <a-curve-point position="-4 0.8 -2"></a-curve-point>
-        <a-curve-point position="-3 0.6 -2"></a-curve-point>
-        <a-curve-point position="-2 0.8 -2"></a-curve-point>
-        <a-curve-point position="-1 0.6 -2"></a-curve-point>
-        <a-curve-point position="0 0.8 -2"></a-curve-point>
-        <a-curve-point position="1 0.6 -2"></a-curve-point>
-        <a-curve-point position="2 0.8 -2"></a-curve-point>
-        <a-curve-point position="3 0.6 -2"></a-curve-point>
-        <a-curve-point position="4 0.8 -2"></a-curve-point>
-        <a-curve-point position="5 0.6 -2"></a-curve-point>
-        <a-curve-point position="6 0.8 -2"></a-curve-point>
-        <a-curve-point position="7 0.6 -2"></a-curve-point>
-      </a-curve>
+      <a-curve-point position="-4 0.8 -2"></a-curve-point>
+      <a-curve-point position="-3 0.6 -2"></a-curve-point>
+      <a-curve-point position="-2 0.8 -2"></a-curve-point>
+      <a-curve-point position="-1 0.6 -2"></a-curve-point>
+      <a-curve-point position="0 0.8 -2"></a-curve-point>
+      <a-curve-point position="1 0.6 -2"></a-curve-point>
+      <a-curve-point position="2 0.8 -2"></a-curve-point>
+      <a-curve-point position="3 0.6 -2"></a-curve-point>
+      <a-curve-point position="4 0.8 -2"></a-curve-point>
+      <a-curve-point position="5 0.6 -2"></a-curve-point>
+      <a-curve-point position="6 0.8 -2"></a-curve-point>
+      <a-curve-point position="7 0.6 -2"></a-curve-point>
+    </a-curve>
   </a-assets>
-  <a-entity id="scene">
-    <a-entity scale="2.6 1.7 2" rotation="-11 -125 0" position="0 -0.216 0"
-      environment="preset: yavapai; dressingAmount: 0; fog: 0.3; ground: canyon; groundTexture: walkernoise; groundColor: #f4e242; groundColor2: #e5ce02; groundYScale: 9;">
-    </a-entity>
+  <a-entity scale="2.6 1.7 2" rotation="-11 -125 0" position="0 -0.216 0"
+    environment="preset: yavapai; dressingAmount: 0; fog: 0.3; ground: canyon; groundTexture: walkernoise; groundColor: #f4e242; groundColor2: #e5ce02; groundYScale: 9;">
+  </a-entity>
 
-    <a-entity id="ocean" position="133.84 -5 469.408" rotation="0 60 0" data-oceanwidth="20" data-oceanlength="30"
-      data-waveheight="2" data-oceanresolution="20">
-    </a-entity>
-    <a-entity id="full_pier" obj-model="obj: #full_pier-obj; mtl: #full_pier-mtl" position="34.267 -1.158 3.130"
-      scale="0.25 0.31  0.45" rotation="0 145 0"></a-entity>
-    <a-entity id="full_tower" obj-model="obj: #full_tower-obj; mtl: #full_tower-mtl" position="76.981 -0.004 12.903"
-      scale="0.700 0.560 0.700" rotation="0 -125 0"></a-entity>
+  <a-entity id="ocean" position="133.84 -5 469.408" rotation="0 60 0" data-oceanwidth="20" data-oceanlength="30"
+    data-waveheight="2" data-oceanresolution="20">
+  </a-entity>
+  <a-entity id="full_pier" obj-model="obj: #full_pier-obj; mtl: #full_pier-mtl" position="34.267 -1.158 3.130"
+    scale="0.25 0.31  0.45" rotation="0 145 0"></a-entity>
+  <a-entity id="full_tower" obj-model="obj: #full_tower-obj; mtl: #full_tower-mtl" position="76.981 -0.004 12.903"
+    scale="0.700 0.560 0.700" rotation="0 -125 0"></a-entity>
 
-    <!-- Moving order is dependend on element order below! -->
-    <a-entity id="navigationBox">
-      <a-cylinder segments-radial="6" data-target="1" position="15.297 -0.917 -10.932" height="0.2" radius="0.5" color="white"></a-cylinder>
-      <a-cylinder segments-radial="6" data-target="2" position="30.314 -0.89 -4.627" height="0.2" radius="0.5" color="white"></a-cylinder>
-      <a-cylinder segments-radial="6" data-target="3" position="38.249 -0.957 1.148" height="0.2" radius="0.5" color="white"></a-cylinder>
-      <a-cylinder segments-radial="6" data-target="4" position="43.258 -0.952 12.26" height="0.2" radius="0.5" color="white"></a-cylinder>
-      <a-cylinder segments-radial="6" data-target="5" position="47.863 3.034 15.588" height="0.2" radius="0.5" color="white"></a-cylinder>
-      <a-cylinder segments-radial="6" data-target="6" position="58.381 3.044 19.806" height="0.2" radius="0.5" color="white"></a-cylinder>
-      <a-cylinder segments-radial="6" data-target="7" position="62.617 -0.913 23.574" height="0.2" radius="0.5" color="white"></a-cylinder>
-      <a-cylinder segments-radial="6" data-target="8" position="62.772 -0.906 27.515" height="0.2" radius="0.5" color="white"></a-cylinder>
-      <a-cylinder segments-radial="6" data-target="9" position="67.554 0.841 30.211" height="0.2" radius="0.5" color="white"></a-cylinder>
-      <a-cylinder segments-radial="6" data-target="10" position="71.779 3.219 25.203" height="0.2" radius="0.5" color="white"></a-cylinder>
-      <a-cylinder segments-radial="6" data-target="11" position="72.169 3.252 22.285" height="0.2" radius="0.5" color="white"></a-cylinder>
-      <a-cylinder segments-radial="6" data-target="12" position="66.879 5.106 19.115" height="0.2" radius="0.5" color="white"></a-cylinder>
-      <a-cylinder segments-radial="6" data-target="13" position="61.886 6.811 25.271" height="0.2" radius="0.5" color="white"></a-cylinder>
-      <a-cylinder segments-radial="6" data-target="16" position="67.295 6.824 28.071" height="0.2" radius="0.5" color="white"></a-cylinder>
-      <a-cylinder segments-radial="6" data-target="14" position="50.967 -0.995 10.318" height="0.2" radius="0.5" color="white"></a-cylinder>
-      <a-cylinder segments-radial="6" data-target="15" position="55.495 -0.849 22.104" height="0.2" radius="0.5" color="white"></a-cylinder>
+  <!-- Moving order is dependend on element order below! -->
+  <a-entity id="navigationBox">
+    <a-cylinder segments-radial="6" data-target="1" position="15.297 -0.917 -10.932" height="0.2" radius="0.5"
+      color="white"></a-cylinder>
+    <a-cylinder segments-radial="6" data-target="2" position="30.314 -0.89 -4.627" height="0.2" radius="0.5"
+      color="white"></a-cylinder>
+    <a-cylinder segments-radial="6" data-target="3" position="38.249 -0.957 1.148" height="0.2" radius="0.5"
+      color="white"></a-cylinder>
+    <a-cylinder segments-radial="6" data-target="4" position="43.258 -0.952 12.26" height="0.2" radius="0.5"
+      color="white"></a-cylinder>
+    <a-cylinder segments-radial="6" data-target="5" position="47.863 3.034 15.588" height="0.2" radius="0.5"
+      color="white"></a-cylinder>
+    <a-cylinder segments-radial="6" data-target="6" position="58.381 3.044 19.806" height="0.2" radius="0.5"
+      color="white"></a-cylinder>
+    <a-cylinder segments-radial="6" data-target="7" position="62.617 -0.913 23.574" height="0.2" radius="0.5"
+      color="white"></a-cylinder>
+    <a-cylinder segments-radial="6" data-target="8" position="62.772 -0.906 27.515" height="0.2" radius="0.5"
+      color="white"></a-cylinder>
+    <a-cylinder segments-radial="6" data-target="9" position="67.554 0.841 30.211" height="0.2" radius="0.5"
+      color="white"></a-cylinder>
+    <a-cylinder segments-radial="6" data-target="10" position="71.779 3.219 25.203" height="0.2" radius="0.5"
+      color="white"></a-cylinder>
+    <a-cylinder segments-radial="6" data-target="11" position="72.169 3.252 22.285" height="0.2" radius="0.5"
+      color="white"></a-cylinder>
+    <a-cylinder segments-radial="6" data-target="12" position="66.879 5.106 19.115" height="0.2" radius="0.5"
+      color="white"></a-cylinder>
+    <a-cylinder segments-radial="6" data-target="13" position="61.886 6.811 25.271" height="0.2" radius="0.5"
+      color="white"></a-cylinder>
+    <a-cylinder segments-radial="6" data-target="16" position="67.295 6.824 28.071" height="0.2" radius="0.5"
+      color="white"></a-cylinder>
+    <a-cylinder segments-radial="6" data-target="14" position="50.967 -0.995 10.318" height="0.2" radius="0.5"
+      color="white"></a-cylinder>
+    <a-cylinder segments-radial="6" data-target="15" position="55.495 -0.849 22.104" height="0.2" radius="0.5"
+      color="white"></a-cylinder>
 
-      <script color="white" height="0.2">
-        // define your path connections here relating to the targets above
-        // -1 is a endpoint
-        pathConnections = {
-          1: {
-            2: {
-              3: {
-                4: {
-                  5: {
-                    6: {
-                      7: {
-                        8: {
-                          9: {
-                            10: {
-                              11: {
-                                12: {
-                                  13: {
-                                    16: -1
-                                  }
+    <script color="white" height="0.2">
+      // define your path connections here relating to the targets above
+      // -1 is a endpoint
+      pathConnections = {
+        1: {
+          2: {
+            3: {
+              4: {
+                5: {
+                  6: {
+                    7: {
+                      8: {
+                        9: {
+                          10: {
+                            11: {
+                              12: {
+                                13: {
+                                  16: -1
                                 }
                               }
                             }
@@ -85,17 +100,17 @@
                       }
                     }
                   }
-                },
-                14: {
-                  15: {
-                    8: {
-                      9: {
-                        10: {
-                          11: {
-                            12: {
-                              13: {
-                                16: -1
-                              }
+                }
+              },
+              14: {
+                15: {
+                  8: {
+                    9: {
+                      10: {
+                        11: {
+                          12: {
+                            13: {
+                              16: -1
                             }
                           }
                         }
@@ -107,29 +122,40 @@
             }
           }
         }
-      </script>
+      }
+    </script>
+  </a-entity>
+
+  <a-camera user-height="0" id="camera">
+
+    <a-entity id="breath" position="0 -1.2 0.3">
+      <a-circle material="color: #4680dd; shader: flat" radius="0.05" position="0 0.8 -2">
+        <a-animation attribute="position" dur="5000" to="0 0.6 -2" easing="ease-in-out" direction="alternate"
+          repeat="indefinite"></a-animation>
+      </a-circle>
+
+      <a-draw-curve curveref="#curveBox" material="shader: line; color: #4680dd">
+        <a-animation attribute="position" dur="10000" to="-2 0 0" easing="linear" direction="normal"
+          repeat="indefinite"></a-animation>
+      </a-draw-curve>
+    </a-entity>
+    <a-entity id="cursor" cursor="fuse: true; fuseTimeout: 2000" position="0 0 -3"
+      geometry="primitive: ring; radiusInner: 0.06; radiusOuter: 0.1"
+      material="color: black; shader: flat; transparent: true; opacity: 0.5">
     </a-entity>
 
-    <a-camera user-height="0" id="camera">
-
-        <a-entity id="breath" position="0 -1.2 0.3">
-          <a-circle material="color: #4680dd; shader: flat" radius="0.05" position="0 0.8 -2">
-            <a-animation attribute="position" dur="5000" to="0 0.6 -2" easing="ease-in-out" direction="alternate" repeat="indefinite"></a-animation>
-          </a-circle>
-    
-          <a-draw-curve curveref="#curveBox" material="shader: line; color: #4680dd">
-            <a-animation attribute="position" dur="10000" to="-2 0 0" easing="linear" direction="normal" repeat="indefinite"></a-animation>
-          </a-draw-curve>
-        </a-entity>
-        <a-entity id="cursor" cursor="fuse: true; fuseTimeout: 2000" position="0 0 -3"
-          geometry="primitive: ring; radiusInner: 0.06; radiusOuter: 0.1"
-          material="color: black; shader: flat; transparent: true; opacity: 0.5">
-        </a-entity>
-    
-      </a-camera>
+  </a-camera>
 
 
+  <!-- Support NPC -->
+  <a-entity id="supportNpc" position="59.016 4.965 16.042" look-at="#camera"
+    sound="src: url(./vr_assets/assets/therapy.mp3); autoplay:true; loop: true; maxDistance: 10">
+    <a-plane material="src:#npc-png" width="1.5" height="1.5" opacity="0.5">
+      <a-animation attribute="opacity" dur="5000" from="0.5" to="1" easing="ease-in-out" direction="alternate" repeat="indefinite">
+      </a-animation>
+    </a-plane>
   </a-entity>
+
 
 </a-scene>
 
