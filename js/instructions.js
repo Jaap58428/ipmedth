@@ -15,6 +15,7 @@ startInstructions();
 
 var room = document.querySelector(".room");
 var headset = document.querySelector(".headset");
+var gekeurd = document.querySelector(".gekeurd");
 var instructionStep = 0;
 document.getElementById('nextButton').addEventListener('click', () => {
   switch (instructionStep) {
@@ -26,16 +27,16 @@ document.getElementById('nextButton').addEventListener('click', () => {
     case 1:
       room.style.display = "none";
       headset.style.display = "none";
+      gekeurd.style.display = "block";
       instructionStep++;
       break;
     case 2:
       room.style.display = "none";
       headset.style.display = "none";
+      gekeurd.style.display = "block";
       break;
     default:
-      room.style.display = "block";
-      headset.style.display = "none";
-      instructionStep++;
+      instructionStep = 0;
   }
 })
 
@@ -53,11 +54,10 @@ document.getElementById('prevButton').addEventListener('click', () => {
     case 2:
       room.style.display = "none";
       headset.style.display = "block";
+      gekeurd.style.display = "none";
       instructionStep--;
       break;
     default:
-      room.style.display = "block";
-      headset.style.display = "none";
-      instructionStep++;
+      instructionStep = 0;
   }
 })

@@ -5,28 +5,32 @@
   text-align: center;
 }
 
-.headset {
+.headset, .gekeurd {
   display: none;
 }
 
 .roomText h2,
-.headsetText h2 {
+.headsetText h2,
+.gekeurdText h2 {
   text-align: center;
 }
 
 .roomText p,
-.headsetText p {
+.headsetText p,
+.gekeurdText p {
   text-align: center;
 }
 
 .roomImageDiv,
-.headsetImageDiv {
+.headsetImageDiv,
+.gekeurdImageDiv {
   text-align: center;
   width: 100%;
 }
 
 .roomImageDiv img,
-.headsetImageDiv img {
+.headsetImageDiv img,
+.gekeurdImageDiv img {
   max-width: 70%;
 }
 
