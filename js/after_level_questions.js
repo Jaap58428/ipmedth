@@ -11,7 +11,6 @@ startQuestions = () => {
 }
 
 
-// TODO: break final questionnaire up in 2 pages/parts so the 5-points and 10-points scales aren't on the same page.
 getQuestionnaireItems = () => {
     // Pick the correct questionnaire JSON file depending on the stage completed
     console.log("*afterlevelquestions() statecheck: " + stateController.levelSelected);
@@ -27,7 +26,7 @@ getQuestionnaireItems = () => {
             })
             break;
         default:
-            $.getJSON("page_assets/after_level_questions_final.json", (response) => {
+            $.getJSON("page_assets/after_level_questions_default.json", (response) => {
                 fillQuestionnaire(response.questionnaireItems)
             });
             break;
@@ -74,8 +73,7 @@ addQuestion = (question) => {
     return label;
 } 
 
-// Add the Likert scale 
-// TODO: NEEDS TO BE MADE PRETTY FOR MORE THAN 5PT
+// Add the Likert scale, returns the UL with the selected amount of choices
 addLikertScale = (title, likertAmount) => {
     let ul = document.createElement("ul");
     ul.className = "likert";
@@ -125,6 +123,8 @@ processForm = (e) => {
     
     saveAsJson('levelEvaluations', currLevel, levelAnswers);
     saveAsJson('generalEvaluations', currLevel, generalAnswers);
+    console.log(stateController.getLocalStorage('levelEvaluations'));
+    
  
     stateController.changeState(2); // return to level select menu
 
