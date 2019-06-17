@@ -271,7 +271,6 @@ startMovement = () => {
    * Returns: none
    */
   addNewListeners = () => {
-    let newTargetsIds;
     // loop through new targetsId's
     for (key in targetIds) {
       if (targetIds.hasOwnProperty(key)) {
