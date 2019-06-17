@@ -58,16 +58,17 @@ createChart = () => {
     console.log("Created chart");
     
     const colors = {
-        BLUE: 'rgba(96, 191, 255, 0.3)',
         YELLOW: 'rgba(255, 244, 104, 0.3)',
         RED: 'rgba(255, 0, 0, 0.3)',
         GREEN: 'rgba(23, 145, 45, 0.3)',
         PINK: 'rgba(255, 137, 219, 0.3)',
+        WHITE: 'rgba(255, 255, 255, 0.3)',
+
     }
 
     ctx = document.getElementById('progressChart');
     // prepares the data to be put into a chart
-    currLv = "evalLevel"+currentDisplay; 
+    currLv = currentDisplay; 
     values = [];
     dataEntry = [];
     var keyNames = [];
@@ -170,6 +171,8 @@ startProgress = () => {
 
 
     scores = stateController.getLocalStorage('levelEvaluations')
+    console.log(scores);
+    
     // scores = scoreExample;
 
     // find highest scored level to display as default
@@ -177,7 +180,7 @@ startProgress = () => {
     levelsDone = []
     for (const key in scores) {
         if (scores.hasOwnProperty(key)) {
-            levelNumber = Number(key.substr(9))
+            levelNumber = Number(key)
             if (levelNumber > highestLevel) {
                 highestLevel = levelNumber
             }
