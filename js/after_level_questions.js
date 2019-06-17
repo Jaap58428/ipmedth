@@ -1,6 +1,13 @@
+/* Autor: Hinako Ogawa (2019) */
+
 startQuestions = () => {
     getQuestionnaireItems();
-    preventDefaultForm();    
+    preventDefaultForm();
+    
+    document.getElementById("backButton").addEventListener('click', () => {
+        stateController.changeState(2)  // Use this to navigate back to main menu
+    })
+    
 }
 
 
