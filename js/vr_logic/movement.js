@@ -1,4 +1,4 @@
-/* Autor: Jaap Kanbier (2019) */
+/* Author: Jaap Kanbier (2019) */
 
 // Global parameters
 var pathConnections
@@ -320,6 +320,6 @@ testMovement = () => {
 
 }
 
-// Kick off scripts
+// Start scripts
 testMovement();
 startMovement();

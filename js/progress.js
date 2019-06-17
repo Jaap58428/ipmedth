@@ -121,55 +121,6 @@ startProgress = () => {
         changeLevel(+1)
     })
 
-    let scoreExample = {
-        "evalLevel2": [{
-                "zelfverzekerd": "1",
-                "situatie": "2",
-                "omgaan": "3",
-                "klachten": "4"
-            },
-            {
-                "zelfverzekerd": "4",
-                "situatie": "3",
-                "omgaan": "2",
-                "klachten": "1"
-            }
-        ],
-        "evalLevel0": [{
-                "zelfverzekerd": "0",
-                "situatie": "2",
-                "omgaan": "1",
-                "klachten": "4"
-            },
-            {
-                "zelfverzekerd": "4",
-                "situatie": "2",
-                "omgaan": "2",
-                "klachten": "1"
-            }
-        ],
-        "evalLevel4": [{
-                "zelfverzekerd": "1",
-                "situatie": "0",
-                "omgaan": "3",
-                "klachten": "2"
-            },
-            {
-                "zelfverzekerd": "4",
-                "situatie": "1",
-                "omgaan": "2",
-                "klachten": "1"
-            },
-            {
-                "zelfverzekerd": "0",
-                "situatie": "3",
-                "omgaan": "1",
-                "klachten": "4"
-            }
-        ]
-    }
-
-
     scores = stateController.getLocalStorage('levelEvaluations')
     console.log(scores);
     
