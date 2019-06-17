@@ -1,3 +1,4 @@
+/* Author: Hinako Ogawa (2019) */
 var levelsDone, currentDisplay, scores;
 
 checkButtonsDisplay = () => {

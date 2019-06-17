@@ -1,3 +1,4 @@
+/* Author: Hinako Ogawa (2019) */
 /**
  * A helper entity that provides the user with support and instructions
  * for stress relieving excercises.
