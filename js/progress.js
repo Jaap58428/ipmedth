@@ -1,12 +1,11 @@
 /* Author: Hinako Ogawa (2019) */
 var levelsDone, currentDisplay, scores;
 
-window.addEventListener("orientationchange", function() {
-    console.log("orientation changed");
-    alert("yoyoyo")
+
+recreateChart = () => {
     progChart.destroy();
     createChart();
-})
+}
 
 checkButtonsDisplay = () => {
     // if the current displayed level isnt the highest, show the next level button
@@ -18,7 +17,7 @@ checkButtonsDisplay = () => {
     } else {
         upbutton.style.visibility = 'hidden'
     }
-
+    
     // if the current displayed level isnt the lowest, show the next previous button
     downButton = document.getElementById('levelDownButton')
     if (currentDisplay !== levelsDone[0]) {
@@ -34,7 +33,7 @@ changeLevel = (direction) => {
     if (direction == 1) {
         // display higher level
         currentDisplay = levelsDone[levelsDone.indexOf(currentDisplay) + 1]
-
+        
     } else {
         // display lower level
         currentDisplay = levelsDone[levelsDone.indexOf(currentDisplay) - 1]
@@ -147,7 +146,10 @@ createChart = () => {
 }
 
 startProgress = () => {
+    window.addEventListener("orientationchange", recreateChart)
+
     document.getElementById('backButton').addEventListener('click', () => {
+        window.removeEventListener("orientationchange", recreateChart)
         stateController.changeState(2)
     })
 
@@ -192,5 +194,6 @@ startProgress = () => {
     console.log('highest: ', highestLevel, levelsDone);
     console.log('last item ', levelsDone[levelsDone.length - 1]);
 }
+
 
 startProgress();
