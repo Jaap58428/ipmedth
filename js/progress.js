@@ -2,6 +2,9 @@
 var levelsDone, currentDisplay, scores;
 
 window.addEventListener("orientationchange", function() {
+    console.log("orientation changed");
+    alert("yoyoyo")
+    progChart.destroy();
     createChart();
 })
 
