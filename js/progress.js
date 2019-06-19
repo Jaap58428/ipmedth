@@ -138,6 +138,9 @@ createChart = () => {
             
         }
     });
+
+    console.log(scores);
+    
 }
 
 startProgress = () => {

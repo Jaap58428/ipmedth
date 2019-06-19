@@ -34,9 +34,6 @@
     <a-asset-item id="goat-obj" src="vr_assets/assets/Mesh_Goat.obj"></a-asset-item>
     <a-asset-item id="goat-mtl" src="vr_assets/assets/Mesh_Goat.mtl"></a-asset-item>
 
-    <img id="npc-png" src="vr_assets/assets/lamp.png">
-
-    <audio id="therapy-mp3" src="vr_assets/assets/therapy.mp3" preload="auto"></audio>
 
     <a-animation id="clickStartAnimation" attribute='scale' dur='2000' from='1 1 1' to='6 6 6' easing="ease-out">
     </a-animation>
@@ -228,14 +225,6 @@
 
   </a-camera>
 
-  
-  <!-- Support NPC -->
-  <a-entity id="supportNpc" position="4.127 2.468 -15.136" look-at="#camera">
-    <a-plane material="src:#npc-png" width="1.5" height="1.5" position="0 3 -3" opacity="0.5" sound="src:#therapy-mp3; autoplay:true">
-        <a-animation attribute="opacity" dur="5000" to="1" easing="ease-in-out" direction="alternate"
-          repeat="indefinite"></a-animation>
-    </a-plane>
-</a-entity>
 
 </a-scene>
 
