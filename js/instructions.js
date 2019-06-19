@@ -16,48 +16,40 @@ startInstructions();
 var room = document.querySelector(".room");
 var headset = document.querySelector(".headset");
 var gekeurd = document.querySelector(".gekeurd");
-var instructionStep = 0;
+var ademhaling = document.querySelector(".ademhaling");
+var voortbeweging = document.querySelector(".voortbeweging");
+
+var instructionStep = "Headset_instruction";
 document.getElementById('nextButton').addEventListener('click', () => {
   switch (instructionStep) {
-    case 0:
-      room.style.display = "none";
+    case "Headset_instruction":
+      console.log("Headset Settings");
       headset.style.display = "block";
-      instructionStep++;
-      break;
-    case 1:
       room.style.display = "none";
-      headset.style.display = "none";
+      instructionStep = "Gekeurd_instruction";
+      break;
+    case "Gekeurd_instruction":
+      console.log("Gekeurd Settings");
       gekeurd.style.display = "block";
-      instructionStep++;
-      break;
-    case 2:
-      room.style.display = "none";
       headset.style.display = "none";
-      gekeurd.style.display = "block";
+      instructionStep = "Ademhaling_instruction";
       break;
-    default:
-      instructionStep = 0;
-  }
-})
-
-document.getElementById('prevButton').addEventListener('click', () => {
-  switch (instructionStep) {
-    case 0:
-      room.style.display = "block";
-      headset.style.display = "none";
-      break;
-    case 1:
-      room.style.display = "block";
-      headset.style.display = "none";
-      instructionStep--;
-      break;
-    case 2:
-      room.style.display = "none";
-      headset.style.display = "block";
+    case "Ademhaling_instruction":
+      console.log("Gekeurd Settings");
+      ademhaling.style.display = "block";
       gekeurd.style.display = "none";
-      instructionStep--;
+      instructionStep = "Voortbeweging_instruction";
+      break;
+    case "Voortbeweging_instruction":
+      console.log("Voortbeweging Settings");
+      voortbeweging.style.display = "block";
+      ademhaling.style.display = "none";
+      instructionStep = "empty_instruction";
+      break;
+    case "empty_instruction":
+      stateController.changeState(2);
       break;
     default:
-      instructionStep = 0;
+    instructionStep = "empty_instruction";
   }
 })
