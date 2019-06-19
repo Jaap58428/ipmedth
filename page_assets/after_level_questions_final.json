@@ -6,17 +6,17 @@
             "type": "5-likert"
         },
         {
-            "title": "zelfverzekerd",
+            "title": "zelfverzekerd ervoor",
             "question": "Ik was zelfverzekerd dat ik het level door kon komen.",
             "type": "5-likert"
         },
         {
-            "title": "situatie",
+            "title": "omgaan met moeilijke situatie",
             "question": "Toen zich een moeilijke situatie voordeed, wist ik hoe ik die aan moest pakken.",
             "type": "5-likert"
         },
         {
-            "title": "omgaan",
+            "title": "zelfverzekerder erna",
             "question": "Na afronding van dit level ben ik zelfverzekerder in het omgaan met hoogtes.",
             "type": "5-likert"
         },
@@ -26,12 +26,12 @@
             "type": "5-likert"
         },
         {
-            "title": "last_algemeen",
+            "title": "hoogtevrees_algemeen",
             "question": "Ik heb last van hoogtevrees.",
             "type": "10-likert"
         },
         {
-            "title": "omgaan_algemeen",
+            "title": "omgaan met angst_algemeen",
             "question": "In hoeverre denk je om te kunnen gaan met je angstgevoelens voor hoogtes?",
             "type": "10-likert"
         },

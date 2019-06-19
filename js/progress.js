@@ -1,6 +1,10 @@
 /* Author: Hinako Ogawa (2019) */
 var levelsDone, currentDisplay, scores;
 
+window.addEventListener("orientationchange", function() {
+    createChart();
+})
+
 checkButtonsDisplay = () => {
     // if the current displayed level isnt the highest, show the next level button
     upbutton = document.getElementById('levelUpButton')
@@ -35,7 +39,20 @@ changeLevel = (direction) => {
 
     document.getElementById('title').innerHTML = "Level " + currentDisplay
     checkButtonsDisplay()
+    progChart.destroy();
     createChart()
+}
+
+to_a = (c2 = 2) => {
+    a = 'ABCDEFGHIJKKLMNOPQRSTUVWXYZ'.split('');
+    return (a.slice(0, c2)); 
+}
+
+emptyElement = (parentEl) => {
+    while(parentEl.firstChild){
+        parentEl.removeChild(parentEl.firstChild)
+        console.log("hello");
+    }
 }
 
 createChart = () => {   
@@ -45,10 +62,14 @@ createChart = () => {
         GREEN: 'rgba(23, 145, 45, 0.3)',
         PINK: 'rgba(255, 137, 219, 0.3)',
         WHITE: 'rgba(255, 255, 255, 0.3)',
-
+        
     }
-
+    
     ctx = document.getElementById('progressChart');
+    legendList = document.getElementById('legendList');
+    emptyElement(legendList);
+
+
     // prepares the data to be put into a chart
     currLv = currentDisplay; 
     evaluationObj = generalEval;
@@ -56,15 +77,17 @@ createChart = () => {
     values = [];
     dataEntry = [];
     keyNames = [];
-    if(currLv != 0){
-        evaluationObj = scores;
-        maxTicks = 5
-    } else{
+    if(currLv == 0){
         evaluationObj = generalEval;
         maxTicks = 10
+    } else{
+        evaluationObj = scores;
+        maxTicks = 5
     }
     for (attempt in evaluationObj[currLv] && evaluationObj[currLv]) {
-        keyNames = Object.keys (evaluationObj[currLv][attempt]);
+        keyNames = Object.keys(evaluationObj[currLv][attempt])
+        keyLength = keyNames.length;
+        labelNames = to_a(keyLength)
         keyValues = Object.values(evaluationObj[currLv][attempt]);
         values.push(keyValues);
         let color = Object.values(colors)[attempt]      
@@ -78,48 +101,29 @@ createChart = () => {
         dataEntry.push(attemptData);
     }    
 
-    categoryLabels = [];
-    catLabel="";
-    keyNames.forEach(element => {
-        switch(element){
-            case "moeite": 
-                catLabel = "moeite met level"
-                break;
-            case "zelfverzekerd": 
-                catLabel = "zelfverzekerd te halen"
-                break;
-            case "situatie": 
-                catLabel = "wist probleem aan te pakken"
-                break;
-            case "omgaan": 
-                catLabel = "na afronding zelfverzekerder"
-                break;
-            case "klachten": 
-                catLabel = "misselijk en duizelig"
-                break;
-            case "last_algemeen": 
-                catLabel = "Ik heb last van hoogtevrees."
-                break;
-            case "omgaan_algemeen": 
-                catLabel = "omgang met angstgevoelens"
-                break;    
-            case "openheid_algemeen": 
-                catLabel = "bereid angst onder ogen zien"
-                break;
-            default:
-                break;
-            }
-            categoryLabels.push(catLabel)
-    });
     
+    console.log("klength: "+keyLength+ " kNames: "+ keyNames);
+    
+
+    
+
+    keyNames.forEach(element => {
+        li = document.createElement('li');
+        li.innerHTML = element;
+        legendList.appendChild(li);
+    });
+
 
     progChart = new Chart(ctx, {
         type:'radar',
         data: {
-            labels: categoryLabels, // labels for the different categories (around the graph)
+            labels: labelNames, // labels for the different categories (around the graph)
             datasets: dataEntry
         },
         options: {
+            legend: {
+                
+            },
             scale: {
                 ticks: {
                     // display: false,
@@ -129,7 +133,9 @@ createChart = () => {
                     showLabelBackdrop: false,   
                     fontColor: 'rgba(0, 0, 0, 0.4)',
                 }
-            }
+            },
+             maintainAspectRatio: false,
+            
         }
     });
 }

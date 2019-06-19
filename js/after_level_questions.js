@@ -3,10 +3,7 @@
 startQuestions = () => {
     getQuestionnaireItems();
     preventDefaultForm();
-    
-    document.getElementById("backButton").addEventListener('click', () => {
-        stateController.changeState(2)  // Use this to navigate back to main menu
-    })
+
     
 }
 
@@ -107,9 +104,10 @@ processForm = (e) => {
     var levelAnswers = {};
     var generalAnswers = {};
     Array.prototype.forEach.call(e.target, function(target){
-        if (target.checked || target.name == "comment") {
+        if (target.checked & target.name != "comment") {   // comments will not be saved
             if (target.name.includes("_algemeen")){ // answers for the general questions
-                generalAnswers[target.name] = target.value;
+                tgk = target.name.slice(0, -9);
+                generalAnswers[tgk] = target.value;
             } else { // answers for the level specific questions
                 levelAnswers[target.name] = target.value;       
             }

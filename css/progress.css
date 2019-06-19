@@ -3,7 +3,41 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 60px;
+    margin-top: 40px;
 }
+
+.header #title {
+    font-size: 2rem;
+}
+
+.flex-container {
+    display: flex;
+    /* flex-flow: row wrap; */
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    /* align-content: stretch; */
+    flex-grow: 1;
+    margin-bottom: 20px;
+}
+
+.chart-container {
+    position: relative;
+    /* flex: 2 1 auto; */
+    /* margin: auto; */
+
+}
+
+.legend-container {
+    position: relative;
+    /* flex: 1 1 auto; */
+    /* margin: auto; */
+}
+
+#legendList {
+    list-style: upper-alpha;
+}
+
 
 .levelDownButton,
 .levelUpButton {

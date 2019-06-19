@@ -6,17 +6,17 @@
             "type": "5-likert"
         },
         {
-            "title": "zelfverzekerd",
+            "title": "zelfverzekerd ervoor",
             "question": "Ik was zelfverzekerd dat ik het level door kon komen.",
             "type": "5-likert"
         },
         {
-            "title": "situatie",
+            "title": "omgaan met moeilijke situatie",
             "question": "Toen zich een moeilijke situatie voordeed, wist ik hoe ik die aan moest pakken.",
             "type": "5-likert"
         },
         {
-            "title": "omgaan",
+            "title": "zerverzekerder erna",
             "question": "Na afronding van dit level ben ik zelfverzekerder in het omgaan met hoogtes.",
             "type": "5-likert"
         },
