@@ -5,32 +5,45 @@
   text-align: center;
 }
 
-.headset, .gekeurd {
+.instruction_element{
+  flex-grow: 2;
+}
+
+.headset, .gekeurd, .ademhaling, .voortbeweging {
   display: none;
 }
 
 .roomText h2,
 .headsetText h2,
-.gekeurdText h2 {
+.gekeurdText h2,
+.ademhalingText h2,
+.voortbewegingText h2 {
   text-align: center;
 }
 
 .roomText p,
 .headsetText p,
-.gekeurdText p {
+.gekeurdText p,
+.ademhalingText p,
+.voortbewegingText p {
   text-align: center;
+  font-size: 18px;
 }
 
 .roomImageDiv,
 .headsetImageDiv,
-.gekeurdImageDiv {
+.gekeurdImageDiv,
+.ademhalingImageDiv,
+.voortbewegingImageDiv {
   text-align: center;
   width: 100%;
 }
 
 .roomImageDiv img,
 .headsetImageDiv img,
-.gekeurdImageDiv img {
+.gekeurdImageDiv img,
+.ademhalingImageDiv img,
+.voortbewegingImageDiv img {
   max-width: 70%;
 }
 
@@ -38,8 +51,7 @@
   text-align: center;
 }
 
-.nextButton,
-.prevButton {
+.nextButton {
   width: 100px;
   text-align: center;
   display: inline-block;
