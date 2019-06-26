@@ -1,12 +1,22 @@
 /* Author: Hinako Ogawa (2019) */
 var levelsDone, currentDisplay, scores;
 
-
+/**
+ * Function: Destroys old chart and creates a new one
+ *  (otherwise the canvas will have overlapping charts)
+ * Arguments: none
+ * Returns: none
+ */
 recreateChart = () => {
     progChart.destroy();
     createChart();
 }
 
+/**
+ * Function: Proces form and check input
+ * Arguments: clickevent
+ * Returns: false
+ */
 checkButtonsDisplay = () => {
     // if the current displayed level isnt the highest, show the next level button
     upbutton = document.getElementById('levelUpButton')
@@ -29,6 +39,11 @@ checkButtonsDisplay = () => {
     }
 }
 
+/**
+ * Function: Changes the level shown and creates a new chart
+ * Arguments: clickevent
+ * Returns: false
+ */
 changeLevel = (direction) => {
     if (direction == 1) {
         // display higher level
@@ -45,18 +60,32 @@ changeLevel = (direction) => {
     createChart()
 }
 
-to_a = (c2 = 2) => {
+/**
+ * Function: Creates an array with letters from the ABCD... string.
+ * Arguments: integer
+ * Returns: array
+ */
+to_a = (c2) => {
     a = 'ABCDEFGHIJKKLMNOPQRSTUVWXYZ'.split('');
     return (a.slice(0, c2)); 
 }
 
+/**
+ * Function: Empties an element from all its child elements
+ * Arguments: HTML element
+ * Returns: false
+ */
 emptyElement = (parentEl) => {
     while(parentEl.firstChild){
         parentEl.removeChild(parentEl.firstChild)
-        console.log("hello");
     }
 }
 
+/**
+ * Function: Create a chart according to chart.js documentation
+ * Arguments: none
+ * Returns: none
+ */
 createChart = () => {   
     const colors = {
         YELLOW: 'rgba(255, 244, 104, 0.3)',
@@ -103,19 +132,13 @@ createChart = () => {
         dataEntry.push(attemptData);
     }    
 
-    
-    console.log("klength: "+keyLength+ " kNames: "+ keyNames);
-    
-
-    
-
     keyNames.forEach(element => {
         li = document.createElement('li');
         li.innerHTML = element;
         legendList.appendChild(li);
     });
 
-
+    // create a chart instance 
     progChart = new Chart(ctx, {
         type:'radar',
         data: {
@@ -139,24 +162,26 @@ createChart = () => {
              maintainAspectRatio: false,
             
         }
-    });
-
-    console.log(scores);
-    
+    });    
 }
 
+/**
+ * Function: global page logic
+ * Arguments: none
+ * Returns: none
+ */
 startProgress = () => {
+    // recreate chart on orientationchange
     window.addEventListener("orientationchange", recreateChart)
 
+    // add eventlisteners to the buttons
     document.getElementById('backButton').addEventListener('click', () => {
         window.removeEventListener("orientationchange", recreateChart)
         stateController.changeState(2)
     })
-
     document.getElementById('levelDownButton').addEventListener('click', () => {
         changeLevel(-1)
     })
-
     document.getElementById('levelUpButton').addEventListener('click', () => {
         changeLevel(+1)
     })
@@ -188,11 +213,6 @@ startProgress = () => {
     document.getElementById('title').innerHTML = "Level " + currentDisplay
     checkButtonsDisplay(levelsDone, currentDisplay)
     createChart();
-
-    console.log(levelsDone);
-    
-    console.log('highest: ', highestLevel, levelsDone);
-    console.log('last item ', levelsDone[levelsDone.length - 1]);
 }
 
 
